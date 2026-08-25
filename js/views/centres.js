@@ -30,6 +30,7 @@ function mentalHub() {
 
 /* ---------- Grief & Loss centre ---------- */
 function griefHub() {
+  const a = store.get().assessments.grief;
   return {
     html: html`
       ${appbar('Grief & Loss', 'You do not have to carry it alone')}
@@ -38,6 +39,8 @@ function griefHub() {
         <p>There is no right way and no timetable for grief. Move gently, at your own pace.</p>
       </div>
       <div class="callout info" style="margin-bottom:12px">Whatever you feel — sadness, numbness, anger, relief, or all at once — is a normal part of grief.</div>
+      ${a ? `<div class="callout ${a.score >= 61 ? 'warn' : 'info'}" style="margin-bottom:12px">Grief support check: <strong>${a.score}% · ${esc(a.band)}</strong>. <a href="#/assess/grief" style="text-decoration:underline;font-weight:700">Retake</a></div>`
+          : `<a class="btn primary" href="#/assess/grief" style="margin-bottom:14px">Take the grief support check</a>`}
       ${sectionH('Your grief toolkit')}
       ${rows(TOOLKITS.grief)}
       ${crisisNote()}

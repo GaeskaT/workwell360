@@ -105,6 +105,57 @@ export const ASSESSMENTS = {
       { max: 100, band: 'Reach out', note: 'This has been heavy. Talking to a professional could really help.' },
     ],
   },
+  grief: {
+    id: 'grief', title: 'Grief support check', pillar: 'grief',
+    intro: 'A gentle check on how grief has been affecting you lately. There are no wrong answers, and this is not a diagnosis.',
+    questions: [
+      'Waves of grief have made it hard to get through the day.',
+      'I have struggled to sleep, eat, or care for myself.',
+      'I have felt isolated or cut off from others.',
+      'It has been hard to manage my usual work or responsibilities.',
+      'I have felt stuck, unable to move forward.',
+      'The pain has felt like too much to carry alone.',
+    ],
+    bands: [
+      { max: 30, band: 'Coping, with support', note: 'You are carrying grief and still coping. Keep leaning on the tools and the people around you.' },
+      { max: 60, band: 'Grief is weighing heavily', note: 'This has been hard. Be gentle with yourself, and consider talking to someone who can support you.' },
+      { max: 100, band: 'Please reach out', note: 'You do not have to carry this alone. A grief counsellor can really help — and if you ever feel unsafe, please use Get urgent help now.' },
+    ],
+  },
+  workplace: {
+    id: 'workplace', title: 'Workplace wellbeing check', pillar: 'workplace',
+    intro: 'How work has felt over the last two weeks. A reflection tool, not a diagnosis.',
+    questions: [
+      'My workload has felt unmanageable.',
+      'Conflict or tension at work has affected me.',
+      'I have dreaded going to work.',
+      'I have felt unsupported by my manager or team.',
+      'Work stress has followed me home.',
+      'I have thought about leaving because of how work feels.',
+    ],
+    bands: [
+      { max: 30, band: 'Healthy at work', note: 'Work feels manageable. Keep protecting your boundaries and energy.' },
+      { max: 60, band: 'Under strain', note: 'Pressure is building. Try the workplace tools and a workload conversation this week.' },
+      { max: 100, band: 'High workplace strain', note: 'Work is taking a real toll. Talking to a counsellor could help you find a way forward.' },
+    ],
+  },
+  family: {
+    id: 'family', title: 'Relationship & home check', pillar: 'family',
+    intro: 'How things have felt at home lately. A reflection tool, not a diagnosis.',
+    questions: [
+      'Tension at home has been weighing on me.',
+      'We struggle to communicate without conflict.',
+      'I feel distant or disconnected from those close to me.',
+      'Work leaves me little energy for the people I love.',
+      'The same unresolved issues keep coming back.',
+      'I feel unsupported at home.',
+    ],
+    bands: [
+      { max: 30, band: 'Connected', note: 'Your relationships feel steady. Keep nurturing them with time and honest talk.' },
+      { max: 60, band: 'Some strain', note: 'A few things need attention. The communication tools below are a good place to start.' },
+      { max: 100, band: 'Struggling — reach out', note: 'Home has felt hard. Couples or family counselling could help you reconnect.' },
+    ],
+  },
 };
 
 /* ---- Toolkits per pillar ---- */

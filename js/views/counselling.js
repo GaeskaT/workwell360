@@ -18,6 +18,9 @@ function hub({ cat }) {
       </div>` : ''}
 
       ${sectionH('Workplace self-help tools')}
+      ${(() => { const wa = store.get().assessments.workplace; return wa
+          ? `<div class="callout ${wa.score >= 61 ? 'warn' : 'info'}" style="margin-bottom:12px">Workplace wellbeing check: <strong>${wa.score}% · ${esc(wa.band)}</strong>. <a href="#/assess/workplace" style="text-decoration:underline;font-weight:700">Retake</a></div>`
+          : `<a class="btn primary" href="#/assess/workplace" style="margin-bottom:14px">Take the workplace wellbeing check</a>`; })()}
       ${rows(TOOLKITS.workplace)}
 
       ${sectionH('Browse by need')}

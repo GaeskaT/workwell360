@@ -187,7 +187,7 @@ function assessment({ id }) {
   };
 }
 function showResult(box, a, score, band) {
-  const routeMap = { anger: '#/anger', stress: '#/stress', burnout: '#/burnout', mental: '#/mental' };
+  const routeMap = { anger: '#/anger', stress: '#/stress', burnout: '#/burnout', mental: '#/mental', grief: '#/grief', workplace: '#/counselling', family: '#/family' };
   box.innerHTML = html`
     <div class="card" style="margin-top:14px">
       ${ring(score, band.band)}

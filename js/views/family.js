@@ -1,10 +1,12 @@
 /* ===========================================================
    views/family.js — Family & Relationship Support 👨‍👩‍👧
    =========================================================== */
+import { store } from '../store.js';
 import { html, esc, appbar, sectionH, rows, crisisNote } from '../ui.js';
 import { FAMILY_TOPICS, TOOLKITS } from '../data.js';
 
 function hub() {
+  const a = store.get().assessments.family;
   return {
     html: html`
       ${appbar('Family & Relationships', 'Support beyond the workplace')}
@@ -12,6 +14,8 @@ function hub() {
         <h1 style="font-size:1.25rem">❤️ Home matters too</h1>
         <p>Work stress follows us home — and home stress follows us to work. Support for the relationships that hold you.</p>
       </div>
+      ${a ? `<div class="callout ${a.score >= 61 ? 'warn' : 'info'}" style="margin-bottom:12px">Relationship & home check: <strong>${a.score}% · ${esc(a.band)}</strong>. <a href="#/assess/family" style="text-decoration:underline;font-weight:700">Retake</a></div>`
+          : `<a class="btn primary" href="#/assess/family" style="margin-bottom:14px">Take the relationship & home check</a>`}
       ${sectionH('Your family & relationship toolkit')}
       ${rows(TOOLKITS.family)}
       ${sectionH('What do you need?')}
