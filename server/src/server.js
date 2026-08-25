@@ -15,6 +15,7 @@ import { getItem, CATALOG } from './catalog.js';
 import { store } from './store.js';
 import { stkPush, stkQuery, normalizeMsisdn, mask } from './mpesa.js';
 import { grantEntitlement } from './entitlements.js';
+import { getProviderRate } from './providers.js';
 import { reportsRouter } from './reports.js';
 
 const app = express();
@@ -57,6 +58,33 @@ app.post('/pay/stk', async (req, res) => {
   } catch (e) {
     log('pay/stk error', e.message);
     res.status(500).json({ error: 'Payment could not be started' });
+  }
+});
+
+/* ── start a per-provider counselling booking payment ─────────────────────── */
+app.post('/pay/booking', async (req, res) => {
+  try {
+    const { provider, phone, owner } = req.body || {};
+    const pr = getProviderRate(provider);
+    if (!pr) return res.status(400).json({ error: 'Unknown provider' });
+    if (pr.rate <= 0) return res.json({ free: true, provider }); // free provider — no payment
+    let msisdn;
+    try { msisdn = normalizeMsisdn(phone); }
+    catch (e) { return res.status(400).json({ error: e.message }); }
+
+    const r = await stkPush({ msisdn, amount: pr.rate, accountRef: 'WW-SESSION', desc: 'Counselling session' });
+    if (!r.ok) return res.status(502).json({ error: r.error });
+
+    store.putTx(r.checkoutId, {
+      item: `session:${provider}`, kind: 'session', providerId: provider,
+      amount: pr.rate, owner: owner || 'anon',
+      msisdn: mask(msisdn), status: 'pending', createdAt: Date.now(),
+    });
+    log('BOOKING STK', r.checkoutId, provider, pr.rate, config.mock ? '(mock)' : '');
+    res.json({ checkoutId: r.checkoutId, amount: pr.rate, provider, mock: !!r.mock });
+  } catch (e) {
+    log('pay/booking error', e.message);
+    res.status(500).json({ error: 'Booking payment could not be started' });
   }
 });
 

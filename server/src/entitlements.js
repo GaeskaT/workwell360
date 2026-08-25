@@ -4,9 +4,18 @@ import { store } from './store.js';
 import { getItem } from './catalog.js';
 
 export function grantEntitlement(tx) {
+  const owner = tx.owner || 'anon';
+  // Counselling bookings are priced per-provider (not a catalog item) and can repeat.
+  if (tx.kind === 'session') {
+    const ent = {
+      owner, kind: 'session', grant: 'session', providerId: tx.providerId || null,
+      item: tx.item, source: tx.id, receipt: tx.receipt || null, expiresAt: null,
+    };
+    store.addEntitlement(ent);
+    return ent;
+  }
   const item = getItem(tx.item);
   if (!item) return null;
-  const owner = tx.owner || 'anon';
   if (store.hasEntitlement(owner, item.grant)) return null; // idempotent
   const ent = {
     owner, kind: item.kind, grant: item.grant, item: tx.item,

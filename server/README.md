@@ -61,6 +61,7 @@ Use `?result=fail` in step 4 to test the cancelled/failed path.
 | GET | `/health` | mode + mock flag |
 | GET | `/catalog` | public price list |
 | POST | `/pay/stk` | `{ item, phone, owner? }` → `{ checkoutId }` |
+| POST | `/pay/booking` | `{ provider, phone, owner? }` → `{ checkoutId }` or `{ free:true }` (server prices by provider) |
 | GET | `/pay/status/:id` | `pending` \| `paid` \| `failed` \| `amount_mismatch` (+ entitlement) |
 | GET | `/entitlements/:owner` | entitlements for a device/user |
 | POST | `/mpesa/callback/:secret` | Safaricom → us (source of truth) |

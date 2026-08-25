@@ -5,6 +5,7 @@ import { store, now, uid, fmtDateTime } from '../store.js';
 import { html, esc, toast, go, appbar, sectionH, rows, kes, crisisNote } from '../ui.js';
 import { PROVIDERS, COUNSELLING_CATEGORIES, PROVIDER_TYPES, TOOLKITS } from '../data.js';
 import { submitReport, backendConfigured } from '../report.js';
+import { payBooking } from '../pay.js';
 
 function hub({ cat }) {
   const active = cat || 'All';
@@ -111,15 +112,38 @@ function book({ id }) {
         <label class="field"><span>How would you like to meet?</span><select id="mode">${p.modes.map(m => `<option>${esc(m)}</option>`).join('')}</select></label>
         <label class="field"><span>Preferred day & time</span><input id="when" placeholder="e.g. Thu afternoon"/></label>
         <label class="field"><span>Anything you'd like them to know? (optional, private)</span><textarea id="note" placeholder="Shared only with your counsellor"></textarea></label>
+        ${(backendConfigured() && p.rate > 0) ? html`<label class="field"><span>M-Pesa phone number</span><input id="book-phone" type="tel" inputmode="tel" placeholder="07XX XXX XXX"/></label>` : ''}
         <div class="callout info">🔒 Your request and notes are shared only with this counsellor — never with your employer.</div>
-        <button class="btn primary" id="confirm" style="margin-top:12px">${p.rate === 0 ? 'Request session (free)' : 'Request — ' + kes(p.rate)}</button>
+        <button class="btn primary" id="confirm" style="margin-top:12px">${p.rate === 0 ? 'Request session (free)' : (backendConfigured() ? 'Pay & book · ' + kes(p.rate) : 'Request — ' + kes(p.rate))}</button>
+        <div id="book-status" class="muted center" style="font-size:.85rem;margin-top:8px"></div>
       </div>`,
     onMount(root) {
-      root.querySelector('#confirm').addEventListener('click', () => {
-        const when = root.querySelector('#when').value.trim() || 'To be confirmed';
-        store.push('bookings', { ts: now(), provider: p.name, providerId: p.id, category: root.querySelector('#cat').value, mode: root.querySelector('#mode').value, when, status: 'requested' });
-        toast('Session requested ✔');
-        go('#/counselling');
+      const record = (status, receipt) => store.push('bookings', {
+        ts: now(), provider: p.name, providerId: p.id,
+        category: root.querySelector('#cat').value, mode: root.querySelector('#mode').value,
+        when: root.querySelector('#when').value.trim() || 'To be confirmed',
+        status, receipt: receipt || null,
+      });
+      root.querySelector('#confirm').addEventListener('click', async () => {
+        if (backendConfigured() && p.rate > 0) {
+          const phone = (root.querySelector('#book-phone').value || '').trim();
+          if (!phone) return toast('Enter your M-Pesa phone number');
+          const btn = root.querySelector('#confirm'); btn.disabled = true;
+          const status = root.querySelector('#book-status');
+          try {
+            const r = await payBooking(p.id, phone, { onStatus: st => { if (st === 'prompt-sent') status.textContent = 'Check your phone and approve the payment…'; } });
+            record(r.paid ? 'paid' : 'requested', r.receipt);
+            toast(r.paid ? 'Session booked & paid ✔' : 'Session requested ✔');
+            go('#/counselling');
+          } catch (e) {
+            btn.disabled = false; status.textContent = '';
+            toast(e.message === 'NO_BACKEND' ? 'No backend configured' : 'Payment failed: ' + e.message);
+          }
+        } else {
+          record('requested');
+          toast(p.rate === 0 ? 'Session requested (free) ✔' : 'Session requested ✔');
+          go('#/counselling');
+        }
       });
     },
   };
