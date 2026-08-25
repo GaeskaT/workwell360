@@ -26,10 +26,23 @@ function hub({ cat }) {
       ${sectionH('Workplace self-help tools')}
       ${rows(TOOLKITS.workplace)}
 
-      ${sectionH(active === 'All' ? 'Verified providers' : active)}
+      ${sectionH('Verified providers')}
+      <label class="field" style="margin-bottom:12px"><span>Filter by need</span>
+        <select id="catfilter">
+          <option value="All" ${active === 'All' ? 'selected' : ''}>All specialities</option>
+          ${COUNSELLING_CATEGORIES.map(c => `<option value="${esc(c)}" ${active === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}
+        </select>
+      </label>
       ${filtered.length ? filtered.map(providerCard).join('') : `<div class="empty"><div class="e">🔍</div><p>No providers for "${esc(active)}" yet.</p><a class="btn" href="#/counselling">See all</a></div>`}
       ${crisisNote()}
       <div class="fab-space"></div>`,
+    onMount(root) {
+      const sel = root.querySelector('#catfilter');
+      sel && sel.addEventListener('change', () => {
+        const v = sel.value;
+        go(v === 'All' ? '#/counselling' : `#/counselling?cat=${encodeURIComponent(v)}`);
+      });
+    },
   };
 }
 
