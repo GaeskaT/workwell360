@@ -67,7 +67,7 @@ Vanilla JS (ES modules), no build step, no dependencies. Themable, accessible, r
 
 ## Roadmap (backend-ready hooks)
 - Accounts + cloud sync (currently local-only)
-- M-Pesa / card payments for store & counselling commission
+- M-Pesa / card payments for store & counselling commission — see **[docs/MPESA_INTEGRATION.md](docs/MPESA_INTEGRATION.md)**
 - Real provider onboarding & verification
 - Live employer aggregation pipeline (consent-gated)
 - Push reminders (via Capacitor wrapper)
