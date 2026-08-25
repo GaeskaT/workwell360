@@ -13,11 +13,12 @@ import { retirementRoutes } from './views/retirement.js';
 import { familyRoutes } from './views/family.js';
 import { storeRoutes } from './views/store.js';
 import { employerRoutes } from './views/employer.js';
+import { centreRoutes } from './views/centres.js';
 
 const ROUTES = {
   ...coreRoutes, ...angerRoutes, ...stressRoutes, ...burnoutRoutes,
   ...counsellingRoutes, ...retirementRoutes, ...familyRoutes,
-  ...storeRoutes, ...employerRoutes,
+  ...storeRoutes, ...employerRoutes, ...centreRoutes,
 };
 
 /* map a route base to a bottom-tab id for active styling */

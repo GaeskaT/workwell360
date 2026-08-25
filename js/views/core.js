@@ -187,7 +187,7 @@ function assessment({ id }) {
   };
 }
 function showResult(box, a, score, band) {
-  const routeMap = { anger: '#/anger', stress: '#/stress', burnout: '#/burnout' };
+  const routeMap = { anger: '#/anger', stress: '#/stress', burnout: '#/burnout', mental: '#/mental' };
   box.innerHTML = html`
     <div class="card" style="margin-top:14px">
       ${ring(score, band.band)}
@@ -294,10 +294,11 @@ function relax() {
 
 /* ---------- Journal ---------- */
 function journal({ id }) {
-  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection' };
+  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal' };
   const prompts = {
     gratitude: 'Name one thing that went well today, and why.',
     reflection: 'What drained you today, and what restored you?',
+    grief: 'However you feel today is okay. Write whatever needs to come out.',
   };
   const entries = store.get().journals[id] || [];
   return {

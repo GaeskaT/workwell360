@@ -3,7 +3,7 @@
    =========================================================== */
 
 export const PILLARS = [
-  { id: 'mental',      emoji: '🧠', name: 'Mental Health',        desc: 'Everyday emotional wellbeing', route: '#/counselling' },
+  { id: 'mental',      emoji: '🧠', name: 'Mental Health',        desc: 'Everyday emotional wellbeing', route: '#/mental' },
   { id: 'anger',       emoji: '😡', name: 'Anger Management',     desc: 'Pause, reflect, respond',      route: '#/anger' },
   { id: 'stress',      emoji: '😰', name: 'Stress Management',    desc: 'Track & lighten the load',     route: '#/stress' },
   { id: 'burnout',     emoji: '🔥', name: 'Burnout Recovery',     desc: 'Recognise & recover',          route: '#/burnout' },
@@ -28,7 +28,7 @@ export const NEED_PATHS = [
   { e: '😡', label: 'I am angry',                 route: '#/anger',       tag: 'Anger pathway' },
   { e: '😰', label: 'I am stressed',              route: '#/stress',      tag: 'Stress pathway' },
   { e: '🔥', label: 'I am exhausted',             route: '#/burnout',     tag: 'Burnout pathway' },
-  { e: '💔', label: 'I am grieving',              route: '#/counselling?cat=Grief and loss', tag: 'Grief pathway' },
+  { e: '💔', label: 'I am grieving',              route: '#/grief', tag: 'Grief pathway' },
   { e: '💼', label: 'I am struggling at work',    route: '#/counselling?cat=Workplace conflict', tag: 'Workplace pathway' },
   { e: '🔄', label: 'I am approaching retirement',route: '#/retirement',  tag: 'Retirement pathway' },
   { e: '❤️', label: 'My relationship is struggling', route: '#/family',   tag: 'Relationship pathway' },
@@ -88,6 +88,23 @@ export const ASSESSMENTS = {
       { max: 100, band: 'High risk', note: 'This looks like burnout. A recovery plan + counsellor is strongly advised.' },
     ],
   },
+  wellbeing: {
+    id: 'wellbeing', title: 'Wellbeing self-check', pillar: 'mental',
+    intro: 'A gentle check-in on how you have been over the last two weeks. Not a diagnosis.',
+    questions: [
+      'I have felt down, low or hopeless.',
+      'I have had little interest or pleasure in things I usually enjoy.',
+      'I have felt anxious, worried or on edge.',
+      'I have struggled to cope with everyday demands.',
+      'I have felt isolated or without support.',
+      'Changes in my sleep or appetite have affected me.',
+    ],
+    bands: [
+      { max: 30, band: 'Positive wellbeing', note: 'You are coping well. Keep up the habits that support you.' },
+      { max: 60, band: 'Some strain', note: 'You are carrying more than usual. Lean on the tools below this week.' },
+      { max: 100, band: 'Reach out', note: 'This has been heavy. Talking to a professional could really help.' },
+    ],
+  },
 };
 
 /* ---- Toolkits per pillar ---- */
@@ -118,6 +135,32 @@ export const TOOLKITS = {
     { ico: '🗺️', title: 'Recovery plan', desc: 'Your step-by-step comeback', route: '#/burnout/recovery' },
     { ico: '↩️', title: 'Return-to-work support', desc: 'Ease back sustainably', route: '#/burnout/rtw' },
     { ico: '🎓', title: 'Preventing burnout', desc: 'Course · 6 lessons', route: '#/course/burnout' },
+  ],
+  mental: [
+    { ico: '🌬️', title: 'Breathing reset', desc: 'Calm your body in 90 seconds', route: '#/tool/breathe' },
+    { ico: '🧘', title: 'Grounding (5-4-3-2-1)', desc: 'Come back to the present', route: '#/tool/relax' },
+    { ico: '🙏', title: 'Gratitude journal', desc: 'Notice what went well', route: '#/journal/gratitude' },
+    { ico: '✍️', title: 'Daily reflection', desc: 'What drained & restored you', route: '#/journal/reflection' },
+    { ico: '💤', title: 'Sleep & self-care basics', desc: 'The habits that protect you', route: '#/stress/selfcare' },
+    { ico: '🧠', title: 'Emotional Intelligence', desc: 'Course · 5 lessons', route: '#/course/eq' },
+    { ico: '💬', title: 'Talk to a professional', desc: 'Individual counselling', route: '#/counselling?cat=Individual counselling' },
+  ],
+  grief: [
+    { ico: '🕊️', title: 'Understanding grief', desc: 'Grief comes in waves — what to expect', route: '#/grief/understanding' },
+    { ico: '🕯️', title: 'Grief journal', desc: 'A private space for how you feel', route: '#/journal/grief' },
+    { ico: '💗', title: 'A memory to hold', desc: 'A gentle remembrance exercise', route: '#/grief/remember' },
+    { ico: '🌬️', title: 'Breathing for hard moments', desc: 'Steady yourself when it surges', route: '#/tool/breathe' },
+    { ico: '🧘', title: 'Grounding when it overwhelms', desc: '5-4-3-2-1 technique', route: '#/tool/relax' },
+    { ico: '🤝', title: 'Grief support group', desc: 'You are not alone', route: '#/counselling?cat=Grief and loss' },
+    { ico: '💬', title: 'Talk to a grief counsellor', desc: 'Compassionate, confidential', route: '#/counselling?cat=Grief and loss' },
+  ],
+  workplace: [
+    { ico: '💬', title: 'Workload conversation guide', desc: 'A script for your manager', route: '#/stress/workload' },
+    { ico: '🚧', title: 'Boundaries at work', desc: 'Protect your time & energy', route: '#/stress/boundaries' },
+    { ico: '🗣️', title: 'Assertive communication', desc: 'Say it firmly, not fiercely', route: '#/anger/assertive' },
+    { ico: '🤝', title: 'Conflict resolution', desc: 'Handle friction professionally', route: '#/workplace/conflict' },
+    { ico: '📊', title: 'Workplace stress check', desc: 'See where the pressure is', route: '#/assess/stress' },
+    { ico: '🧭', title: 'Career counselling', desc: 'Talk through your path', route: '#/counselling?cat=Career counselling' },
   ],
 };
 
@@ -175,7 +218,7 @@ export const FAMILY_TOPICS = [
   { ico: '💞', title: 'Couples & marriage', desc: 'Communication, conflict, reconnection', route: '#/counselling?cat=Couples counselling' },
   { ico: '👪', title: 'Family counselling', desc: 'Whole-family support', route: '#/counselling?cat=Family counselling' },
   { ico: '🧒', title: 'Parenting & children', desc: 'Balancing work and home', route: '#/family/parenting' },
-  { ico: '🕊️', title: 'Grief & bereavement', desc: 'Loss support for you and family', route: '#/counselling?cat=Grief and loss' },
+  { ico: '🕊️', title: 'Grief & bereavement', desc: 'Loss support for you and family', route: '#/grief' },
   { ico: '🧓', title: 'Caregiving & ageing parents', desc: 'Support the sandwich generation', route: '#/family/caregiving' },
   { ico: '⚖️', title: 'Work–life balance', desc: 'Protect home from work spillover', route: '#/stress/boundaries' },
 ];

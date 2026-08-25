@@ -2,8 +2,8 @@
    views/counselling.js — Workplace Counselling Centre 💼
    =========================================================== */
 import { store, now, fmtDateTime } from '../store.js';
-import { html, esc, toast, go, appbar, sectionH, kes, crisisNote } from '../ui.js';
-import { PROVIDERS, COUNSELLING_CATEGORIES, PROVIDER_TYPES } from '../data.js';
+import { html, esc, toast, go, appbar, sectionH, rows, kes, crisisNote } from '../ui.js';
+import { PROVIDERS, COUNSELLING_CATEGORIES, PROVIDER_TYPES, TOOLKITS } from '../data.js';
 
 function hub({ cat }) {
   const active = cat || 'All';
@@ -16,6 +16,9 @@ function hub({ cat }) {
       ${bookings.length ? html`<div class="card"><h3>Your sessions</h3>
         ${bookings.slice(0, 3).map(b => `<div class="row"><span class="ico">🗓️</span><span class="rt"><span class="rtl">${esc(b.provider)} · ${esc(b.mode)}</span><span class="rd">${esc(b.category)} · ${esc(b.when)}</span></span><span class="chip on">${esc(b.status)}</span></div>`).join('')}
       </div>` : ''}
+
+      ${sectionH('Workplace self-help tools')}
+      ${rows(TOOLKITS.workplace)}
 
       ${sectionH('Browse by need')}
       <div class="chips" style="margin-bottom:8px">
