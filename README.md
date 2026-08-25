@@ -1,6 +1,6 @@
 # WorkWell 360
 
-**Healthy People. Healthy Workplaces. Healthy Futures.**
+**Wellness. Performance. Purpose.**
 
 A complete **workplace mental-wellness and retirement-transition ecosystem** — not just a
 counselling-booking app. Built as an installable, offline-capable **PWA**, ready to wrap for the

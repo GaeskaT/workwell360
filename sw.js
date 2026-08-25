@@ -1,5 +1,5 @@
 /* WorkWell 360 — service worker (offline-first app shell) */
-const CACHE = 'ww360-v2';
+const CACHE = 'ww360-v3';
 const ASSETS = [
   './', './index.html', './css/app.css', './manifest.webmanifest',
   './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png',

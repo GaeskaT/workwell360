@@ -2,7 +2,7 @@
 
 **App name:** WorkWell 360
 **Short description (max 80 chars):**
-> Healthy People. Healthy Workplaces. Healthy Futures. Wellbeing to retirement.
+> Wellness. Performance. Purpose. Workplace wellbeing to a healthy retirement.
 
 **Full description:**
 > WorkWell 360 is a complete workplace mental-wellness and retirement-transition companion —
