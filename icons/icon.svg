@@ -1,27 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#134e4a"/>
-      <stop offset="1" stop-color="#0d9488"/>
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d7f4ee"/>
     </linearGradient>
-    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#a7f3d0"/>
-      <stop offset="1" stop-color="#34d399"/>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d9488"/>
+      <stop offset="1" stop-color="#14b8a6"/>
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <!-- 360 transition ring -->
-  <g fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round">
-    <path d="M256 118 a138 138 0 1 1 -110 55" opacity="0.95"/>
-  </g>
-  <!-- arrow head closing the loop (transition / continuity) -->
-  <path d="M256 92 l40 26 -40 26 z" fill="#ffffff"/>
-  <!-- wellness heart-leaf in the centre -->
-  <path d="M256 330
-           c-70 -46 -104 -92 -104 -138
-           a52 52 0 0 1 104 -14
-           a52 52 0 0 1 104 14
-           c0 46 -34 92 -104 138 z" fill="url(#leaf)"/>
-  <!-- leaf vein -->
-  <path d="M256 196 v118 M256 250 l-34 -22 M256 250 l34 -22" stroke="#0f766e" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.55"/>
+
+  <!-- 360 transition ring with a gap at top-right -->
+  <path d="M371 154 A150 150 0 1 1 282 102" fill="none" stroke="url(#teal)" stroke-width="24" stroke-linecap="round"/>
+  <!-- the "i" tittle / ring dot -->
+  <circle cx="331" cy="120" r="17" fill="#14b8a6"/>
+
+  <!-- 360° label -->
+  <text x="360" y="182" font-family="Segoe UI, Arial, sans-serif" font-size="60" font-weight="700" fill="#0d9488" text-anchor="middle">360°</text>
+
+  <!-- the W (navy) with a teal final upstroke forming the "i" -->
+  <path d="M168 180 L214 312 L256 214 L298 312" fill="none" stroke="#16294d" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M298 312 L344 180" fill="none" stroke="url(#teal)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
