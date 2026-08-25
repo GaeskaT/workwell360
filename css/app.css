@@ -68,6 +68,12 @@ small{color:var(--muted)}
 .brandbar .logo{width:40px;height:40px;border-radius:11px;flex:0 0 auto}
 .brandbar .tt{font-weight:800; font-size:1.15rem; letter-spacing:-.02em}
 .brandbar .tag{font-size:.72rem; color:var(--muted); font-weight:600}
+/* full brand lockup (uses the supplied logo as-is; plate keeps it legible in both themes) */
+.brandwrap{display:flex; justify-content:center; padding:18px 0 8px}
+.brandplate{display:inline-flex; align-items:center; justify-content:center; background:#ffffff;
+  border:1px solid var(--line); border-radius:18px; padding:14px 20px; box-shadow:var(--shadow)}
+.brandlogo{display:block; height:96px; width:auto; max-width:100%}
+@media(max-width:400px){.brandlogo{height:80px}}
 
 /* ---- Cards ---- */
 .card{

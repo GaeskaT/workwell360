@@ -12,13 +12,11 @@ import {
 function onboarding() {
   return {
     html: html`
-      <div class="hero" style="margin-top:24px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <img src="icons/icon.svg" width="46" height="46" alt="" style="border-radius:12px;background:#fff;padding:2px"/>
-          <div><div style="font-weight:800;font-size:1.3rem">WorkWell 360</div>
-          <div style="font-size:.8rem;opacity:.9">Wellness. Performance. Purpose.</div></div>
-        </div>
-        <p>A complete workplace mental-wellness and retirement-transition companion — from everyday stress to a healthy retirement.</p>
+      <div class="brandwrap" style="padding-top:24px">
+        <span class="brandplate"><img class="brandlogo" src="icons/logo-full.png" alt="WorkWell 360 — Wellness. Performance. Purpose."/></span>
+      </div>
+      <div class="hero">
+        <p style="margin:0">A complete workplace mental-wellness and retirement-transition companion — from everyday stress to a healthy retirement.</p>
       </div>
       <div class="card">
         <h2>Let's set you up</h2>
@@ -62,9 +60,8 @@ function dashboard() {
 
   return {
     html: html`
-      <div class="brandbar">
-        <img class="logo" src="icons/icon.svg" alt=""/>
-        <div><div class="tt">WorkWell 360</div><div class="tag">Wellness · Performance · Purpose</div></div>
+      <div class="brandwrap">
+        <span class="brandplate"><img class="brandlogo" src="icons/logo-full.png" alt="WorkWell 360 — Wellness. Performance. Purpose."/></span>
       </div>
 
       <div class="hero">
@@ -453,8 +450,8 @@ function about() {
   return {
     html: html`
       ${appbar('About WorkWell 360')}
-      <div class="hero"><h1 style="font-size:1.2rem">Wellness.<br>Performance.<br>Purpose.</h1>
-        <p>From workplace stress to workplace well-being — and from employment to a healthy retirement.</p></div>
+      <div class="brandwrap"><span class="brandplate"><img class="brandlogo" src="icons/logo-full.png" alt="WorkWell 360 — Wellness. Performance. Purpose."/></span></div>
+      <div class="hero"><p style="margin:0">From workplace stress to workplace well-being — and from employment to a healthy retirement.</p></div>
       <div class="card"><h3>One journey, fully covered</h3>
         <p class="muted">Most wellness apps stop at the working years. WorkWell 360 covers the whole arc:</p>
         <p style="font-weight:600;font-size:.85rem">Joining work → Adjustment → Stress → Anger → Burnout → Relationships → Caregiving → Career → Pre-retirement → Retirement → Post-retirement well-being.</p>
