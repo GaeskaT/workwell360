@@ -16,6 +16,16 @@ export const config = {
   baseUrl: isProd ? 'https://api.safaricom.co.ke' : 'https://sandbox.safaricom.co.ke',
   devRoutes: (process.env.DEV_ROUTES || 'true').toLowerCase() === 'true',
   reports: { adminToken: process.env.REPORT_ADMIN_TOKEN || '' },
+  payouts: {
+    platformPct: Number(process.env.COMMISSION_PLATFORM_PCT || 0.2), // platform keeps 20%
+    maxAuto: Number(process.env.PAYOUT_MAX_AUTO || 20000),           // above this needs approval
+    adminToken: process.env.PAYOUT_ADMIN_TOKEN || process.env.REPORT_ADMIN_TOKEN || '',
+    b2c: {
+      shortcode: process.env.MPESA_B2C_SHORTCODE || '',
+      initiator: process.env.MPESA_B2C_INITIATOR || '',
+      securityCredential: process.env.MPESA_B2C_SECURITY_CREDENTIAL || '',
+    },
+  },
 
   mpesa: {
     key: process.env.MPESA_CONSUMER_KEY || '',

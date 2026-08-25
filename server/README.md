@@ -67,6 +67,13 @@ Use `?result=fail` in step 4 to test the cancelled/failed path.
 | POST | `/mpesa/callback/:secret` | Safaricom → us (source of truth) |
 | POST | `/dev/simulate-callback/:id` | dev only; `?result=success\|fail` |
 
+## Counsellor payouts (B2C)
+
+Collecting a session fee is done (`/pay/booking`); splitting it and settling the counsellor's share
+via **M-Pesa B2C** is in `/admin/ledger`, `/admin/payouts/run`, and the B2C result callback —
+privacy-aware (payout numbers only ever stored masked) with a manual-approval threshold for large
+payouts. See **[PAYOUTS.md](PAYOUTS.md)**.
+
 ## Anonymous workplace reporting
 
 This service also hosts the **anonymous intake** endpoints (`/report`, `/admin/reports`) used by the

@@ -17,6 +17,7 @@ import { stkPush, stkQuery, normalizeMsisdn, mask } from './mpesa.js';
 import { grantEntitlement } from './entitlements.js';
 import { getProviderRate } from './providers.js';
 import { reportsRouter } from './reports.js';
+import { payoutsRouter, onSessionPaid } from './payouts.js';
 
 const app = express();
 app.set('trust proxy', false); // never derive client IP from proxy headers
@@ -148,11 +149,15 @@ function applyResult(checkoutId, { ok, amount, receipt, reason }) {
   }
   const paid = store.patchTx(checkoutId, { status: 'paid', receipt: receipt || null, paidAt: Date.now() });
   const ent = grantEntitlement(paid);
+  if (paid.kind === 'session') onSessionPaid(paid); // create commission ledger entry
   log('PAID', checkoutId, receipt || '', '→ entitlement:', ent ? ent.grant : '(already owned)');
 }
 
 /* ── anonymous workplace reporting (privacy-hardened; see reports.js) ──────── */
 app.use(reportsRouter());
+
+/* ── counsellor payouts (M-Pesa B2C; see payouts.js) ──────────────────────── */
+app.use(payoutsRouter());
 
 app.listen(config.port, () => {
   console.log('\n' + banner());

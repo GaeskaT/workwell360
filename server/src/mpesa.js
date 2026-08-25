@@ -81,6 +81,34 @@ export async function stkPush({ msisdn, amount, accountRef, desc }) {
   return { ok: true, checkoutId: j.CheckoutRequestID, merchantId: j.MerchantRequestID };
 }
 
+/* ── B2C (pay a counsellor their share) ──────────────────────────────────── */
+export async function b2cPayment({ msisdn, amount, remarks = 'WorkWell 360 payout', occasion = 'session-share' }) {
+  if (mock) {
+    return { ok: true, conversationId: 'ws_B2C_' + Math.random().toString(36).slice(2, 12).toUpperCase(), mock: true };
+  }
+  const b = config.payouts.b2c;
+  const body = {
+    InitiatorName: b.initiator,
+    SecurityCredential: b.securityCredential,
+    CommandID: 'BusinessPayment',
+    Amount: amount,
+    PartyA: b.shortcode,
+    PartyB: msisdn,
+    Remarks: String(remarks).slice(0, 100),
+    QueueTimeOutURL: `${mpesa.callbackBase}/mpesa/b2c/timeout/${mpesa.callbackSecret}`,
+    ResultURL: `${mpesa.callbackBase}/mpesa/b2c/result/${mpesa.callbackSecret}`,
+    Occasion: String(occasion).slice(0, 100),
+  };
+  const r = await fetch(`${baseUrl}/mpesa/b2c/v1/paymentrequest`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${await accessToken()}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const j = await r.json();
+  if (j.ResponseCode !== '0') return { ok: false, error: j.errorMessage || j.ResponseDescription || 'B2C failed', raw: j };
+  return { ok: true, conversationId: j.ConversationID, originatorId: j.OriginatorConversationID };
+}
+
 /* ── STK query (reconcile when a callback is late/unreachable) ────────────── */
 export async function stkQuery(checkoutId) {
   if (mock) return { pending: true, mock: true }; // dev uses /dev/simulate-callback instead
