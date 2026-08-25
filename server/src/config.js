@@ -15,6 +15,7 @@ export const config = {
   env: MOCK ? 'mock' : (isProd ? 'production' : 'sandbox'),
   baseUrl: isProd ? 'https://api.safaricom.co.ke' : 'https://sandbox.safaricom.co.ke',
   devRoutes: (process.env.DEV_ROUTES || 'true').toLowerCase() === 'true',
+  reports: { adminToken: process.env.REPORT_ADMIN_TOKEN || '' },
 
   mpesa: {
     key: process.env.MPESA_CONSUMER_KEY || '',

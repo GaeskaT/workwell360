@@ -66,6 +66,12 @@ Use `?result=fail` in step 4 to test the cancelled/failed path.
 | POST | `/mpesa/callback/:secret` | Safaricom → us (source of truth) |
 | POST | `/dev/simulate-callback/:id` | dev only; `?result=success\|fail` |
 
+## Anonymous workplace reporting
+
+This service also hosts the **anonymous intake** endpoints (`/report`, `/admin/reports`) used by the
+app's "Report anonymously" feature — privacy-hardened (no identity, no IP logging, coarse timestamps,
+access-key ownership). See **[REPORTS.md](REPORTS.md)** for the design, endpoints, and curl examples.
+
 ## What's intentionally NOT here yet (later phases)
 
 - B2C counsellor payouts, Ratiba recurring, reversals/refunds (Phases 4–6).

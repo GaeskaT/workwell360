@@ -15,8 +15,10 @@ import { getItem, CATALOG } from './catalog.js';
 import { store } from './store.js';
 import { stkPush, stkQuery, normalizeMsisdn, mask } from './mpesa.js';
 import { grantEntitlement } from './entitlements.js';
+import { reportsRouter } from './reports.js';
 
 const app = express();
+app.set('trust proxy', false); // never derive client IP from proxy headers
 app.use(express.json());
 app.use(cors({
   origin(origin, cb) {
@@ -120,6 +122,9 @@ function applyResult(checkoutId, { ok, amount, receipt, reason }) {
   const ent = grantEntitlement(paid);
   log('PAID', checkoutId, receipt || '', '→ entitlement:', ent ? ent.grant : '(already owned)');
 }
+
+/* ── anonymous workplace reporting (privacy-hardened; see reports.js) ──────── */
+app.use(reportsRouter());
 
 app.listen(config.port, () => {
   console.log('\n' + banner());
