@@ -4,6 +4,7 @@
 import { store as db, uid } from '../store.js';
 import { html, esc, toast, go, appbar, sectionH, kes } from '../ui.js';
 import { PRODUCTS } from '../data.js';
+import { payWithMpesa, backendConfigured } from '../pay.js';
 
 const CATS = ['All', 'Journals', 'Courses'];
 
@@ -71,8 +72,12 @@ function cart() {
             <button class="btn sm" data-rm="${p.id}" style="width:auto;margin-left:8px">✕</button></div>`).join('')}
         </div></div>
         <div class="card"><div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.1rem"><span>Total</span><span class="price">${kes(total)}</span></div></div>
-        <button class="btn primary" id="checkout">Checkout</button>
-        <p class="muted center" style="font-size:.78rem;margin-top:8px">Demo checkout — connect M-Pesa / card at publishing.</p>
+        ${backendConfigured() ? html`<div class="card">
+          <label class="field" style="margin:0"><span>M-Pesa phone number</span><input id="pay-phone" type="tel" inputmode="tel" placeholder="07XX XXX XXX"/></label>
+        </div>` : ''}
+        <button class="btn primary" id="checkout">${backendConfigured() ? 'Pay with M-Pesa · ' + kes(total) : 'Checkout'}</button>
+        <div id="pay-status" class="muted center" style="font-size:.85rem;margin-top:8px"></div>
+        ${backendConfigured() ? '' : `<p class="muted center" style="font-size:.78rem;margin-top:8px">Demo checkout — set a Backend URL in Settings to enable M-Pesa.</p>`}
       ` : `<div class="empty"><div class="e">🛒</div><p>Your cart is empty</p><a class="btn primary" href="#/store">Browse the store</a></div>`}
       <div class="fab-space"></div>`,
     onMount(root) {
@@ -80,10 +85,25 @@ function cart() {
         db.update(s => { s.cart = s.cart.filter(x => x !== b.dataset.rm); }); go('#/cart');
       }));
       const co = root.querySelector('#checkout');
-      co && co.addEventListener('click', () => {
-        // unlock course products locally as a demo "purchase"
-        db.update(s => { s.cart = []; });
-        toast('Purchase complete ✔ (demo)'); go('#/store');
+      const status = root.querySelector('#pay-status');
+      co && co.addEventListener('click', async () => {
+        if (!backendConfigured()) {
+          db.update(s => { s.cart = []; });
+          toast('Purchase complete ✔ (demo)'); go('#/store'); return;
+        }
+        const phone = (root.querySelector('#pay-phone').value || '').trim();
+        if (!phone) return toast('Enter your M-Pesa phone number');
+        co.disabled = true;
+        try {
+          for (const p of items) {
+            status.textContent = `Sending request for ${p.name}…`;
+            await payWithMpesa(p.id, phone, { onStatus: st => { if (st === 'prompt-sent') status.textContent = `Check your phone and approve the ${p.name} payment…`; } });
+          }
+          toast('Payment complete ✔'); go('#/store');
+        } catch (e) {
+          co.disabled = false; status.textContent = '';
+          toast(e.message === 'NO_BACKEND' ? 'No backend configured' : 'Payment failed: ' + e.message);
+        }
       });
     },
   };

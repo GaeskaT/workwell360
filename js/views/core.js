@@ -414,6 +414,13 @@ function settings() {
         <div class="callout info" style="margin-top:10px">🔒 Check-ins, journals and assessments are stored only on this device. Employers can never see individual counselling or personal data.</div>
       </div>
       <div class="card">
+        <h3>Backend (optional)</h3>
+        <label class="field"><span>Server URL for payments & report delivery</span>
+          <input id="apibase" value="${esc(s.settings.apiBase || '')}" placeholder="https://api.yourdomain.com" autocapitalize="off" autocomplete="off"/></label>
+        <div class="callout info">Leave blank to keep everything on-device — payments run in demo mode and reports stay local. Set your deployed backend URL to enable M-Pesa and anonymous report delivery.</div>
+        <button class="btn" id="apisave">Save backend URL</button>
+      </div>
+      <div class="card">
         <h3>Your data</h3>
         <div class="btnrow">
           <button class="btn" id="export">Export my data</button>
@@ -430,6 +437,11 @@ function settings() {
         root.querySelectorAll('#theme button').forEach(x => x.classList.toggle('on', x === b));
       }));
       root.querySelector('#agg').addEventListener('change', e => store.update(st => { st.settings.shareAnonAggregate = e.target.checked; }));
+      root.querySelector('#apisave').addEventListener('click', () => {
+        const v = root.querySelector('#apibase').value.trim().replace(/\/+$/, '');
+        store.update(st => { st.settings.apiBase = v; });
+        toast(v ? 'Backend URL saved' : 'Backend cleared — demo mode');
+      });
       root.querySelector('#export').addEventListener('click', () => {
         const blob = new Blob([store.exportJSON()], { type: 'application/json' });
         const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'workwell360-data.json'; a.click();

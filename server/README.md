@@ -24,7 +24,7 @@ curl -s localhost:8790/health
 # 2. start a payment (server looks up the price; client never sends an amount)
 CID=$(curl -s -X POST localhost:8790/pay/stk \
   -H 'Content-Type: application/json' \
-  -d '{"item":"course_stress","phone":"0708374149","owner":"device-123"}' \
+  -d '{"item":"c-stress","phone":"0708374149","owner":"device-123"}' \
   | python -c "import sys,json;print(json.load(sys.stdin)['checkoutId'])")
 echo "checkoutId=$CID"
 

@@ -7,7 +7,7 @@ const KEY = 'ww360.v1';
 const DEFAULTS = () => ({
   onboarded: false,
   profile: { name: '', org: 'Demo Organisation', role: 'employee', retireInMonths: 18 },
-  settings: { theme: 'system', shareAnonAggregate: true, reminders: false },
+  settings: { theme: 'system', shareAnonAggregate: true, reminders: false, apiBase: '' },
   checkins: [],        // {ts, mood, note}
   angerDiary: [],      // {ts, trigger, body, intensity, response, note}
   stressDiary: [],     // {ts, domains:[], level, note}
@@ -66,3 +66,6 @@ export const now = () => Date.now();
 export const fmtDate = (ts) => new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 export const fmtDateTime = (ts) => new Date(ts).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 export const daysAgo = (ts) => Math.floor((now() - ts) / 86400000);
+
+/** Configured backend base URL (empty = local/demo mode). */
+export const apiBase = () => (state.settings && state.settings.apiBase || '').replace(/\/+$/, '');

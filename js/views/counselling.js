@@ -4,6 +4,7 @@
 import { store, now, uid, fmtDateTime } from '../store.js';
 import { html, esc, toast, go, appbar, sectionH, rows, kes, crisisNote } from '../ui.js';
 import { PROVIDERS, COUNSELLING_CATEGORIES, PROVIDER_TYPES, TOOLKITS } from '../data.js';
+import { submitReport, backendConfigured } from '../report.js';
 
 function hub({ cat }) {
   const active = cat || 'All';
@@ -184,32 +185,42 @@ function reportAnon() {
       <p class="muted center" style="font-size:.76rem">Reports are stored privately on your device with a reference code. When your organisation connects a confidential reporting channel (EAP / ombudsperson), reports are delivered anonymised — never with your identity.</p>
       <div class="fab-space"></div>`,
     onMount(root) {
-      root.querySelector('#r-submit').addEventListener('click', () => {
+      root.querySelector('#r-submit').addEventListener('click', async () => {
         const detail = root.querySelector('#r-detail').value.trim();
         if (!detail) return toast('Please describe what happened');
         if (!root.querySelector('#r-consent').checked) return toast('Please tick the confirmation');
-        const ref = makeRef();
-        const report = {
-          ts: now(), ref,
+        const input = {
           category: root.querySelector('#r-cat').value,
           detail,
           area: root.querySelector('#r-area').value.trim(),
           when: root.querySelector('#r-when').value.trim(),
           severity: root.querySelector('#r-sev').value,
           others: root.querySelector('#r-others').value.trim(),
-          status: 'Submitted',
         };
-        store.push('reports', report);
+        const btn = root.querySelector('#r-submit');
+        btn.disabled = true;
+        let ref, accessKey = null;
+        if (backendConfigured()) {
+          try { const j = await submitReport(input); ref = j.ref; accessKey = j.accessKey; }
+          catch { ref = makeRef(); store.push('reports', { ts: now(), ref, ...input, status: 'Submitted' }); }
+        } else {
+          ref = makeRef(); store.push('reports', { ts: now(), ref, ...input, status: 'Submitted' });
+        }
+        showConfirmation({ ...input, ref }, accessKey);
+      });
+
+      function showConfirmation(report, accessKey) {
         root.querySelector('#form-card').classList.add('hidden');
         root.querySelector('#r-done').innerHTML = html`
           <div class="card" style="border-color:var(--brand)">
             <h3>✅ Report submitted anonymously</h3>
-            <p class="muted">Keep this reference to check back — you never have to give your name.</p>
-            <div class="callout info" style="font-size:1.05rem;text-align:center;font-weight:800;letter-spacing:.04em">${ref}</div>
+            <p class="muted">Keep ${accessKey ? 'these' : 'this reference'} to check back — you never have to give your name.</p>
+            <div class="callout info" style="font-size:1.05rem;text-align:center;font-weight:800;letter-spacing:.04em">${esc(report.ref)}</div>
+            ${accessKey ? `<div class="callout warn" style="text-align:center;margin-top:8px"><small style="display:block;font-weight:600">Access key — needed to follow up. Save it now; it cannot be recovered.</small><span style="font-size:1.05rem;font-weight:800;letter-spacing:.04em">${esc(accessKey)}</span></div>` : ''}
             <ul class="bul" style="margin-top:10px">
               <li>No identifying information was attached to your report.</li>
               <li>You are protected from retaliation for reporting in good faith.</li>
-              <li>Follow up any time using your reference code — anonymously.</li>
+              <li>Follow up any time using your ${accessKey ? 'reference and access key' : 'reference code'} — anonymously.</li>
             </ul>
             <div class="btnrow">
               <button class="btn" id="r-copy">Copy report</button>
@@ -218,13 +229,13 @@ function reportAnon() {
           </div>`;
         root.querySelector('#r-list').innerHTML = renderReports(store.get().reports);
         root.querySelector('#r-copy').addEventListener('click', async () => {
-          const txt = `WorkWell 360 anonymous report\nRef: ${ref}\nCategory: ${report.category}\nUrgency: ${report.severity}\nArea: ${report.area || 'n/a'}\nWhen: ${report.when || 'n/a'}\nOthers affected: ${report.others || 'n/a'}\n\n${report.detail}`;
+          const txt = `WorkWell 360 anonymous report\nRef: ${report.ref}${accessKey ? `\nAccess key: ${accessKey}` : ''}\nCategory: ${report.category}\nUrgency: ${report.severity}\nArea: ${report.area || 'n/a'}\nWhen: ${report.when || 'n/a'}\nOthers affected: ${report.others || 'n/a'}\n\n${report.detail}`;
           try { await navigator.clipboard.writeText(txt); toast('Report copied'); } catch { toast('Copy not available'); }
         });
         root.querySelector('#r-another').addEventListener('click', () => go('#/workplace/report'));
         window.scrollTo(0, 0);
         toast('Submitted anonymously ✔');
-      });
+      }
     },
   };
 }
