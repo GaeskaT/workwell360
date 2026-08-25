@@ -14,6 +14,7 @@ const DEFAULTS = () => ({
   energy: [],          // {ts, energy, sleep, workload}
   journals: {},        // {journalId: [{ts, prompt, text}]}
   bookings: [],        // {ts, category, provider, mode, when, status}
+  reports: [],         // anonymous workplace reports {ts, ref, category, area, detail, when, severity, others, status} — NO identifiers
   assessments: {},     // {assessId: {ts, score, band, answers}}
   retirement: { scores: null, plan: [], phase: null },
   courseProgress: {},  // {courseId: {lessons:[idx], done:bool}}

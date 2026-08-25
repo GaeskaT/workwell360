@@ -206,6 +206,7 @@ export const TOOLKITS = {
     { ico: '💬', title: 'Talk to a grief counsellor', desc: 'Compassionate, confidential', route: '#/counselling?cat=Grief and loss' },
   ],
   workplace: [
+    { ico: '🕵️', title: 'Report anonymously', desc: 'Confidential — no victimization', route: '#/workplace/report' },
     { ico: '💬', title: 'Workload conversation guide', desc: 'A script for your manager', route: '#/stress/workload' },
     { ico: '🚧', title: 'Boundaries at work', desc: 'Protect your time & energy', route: '#/stress/boundaries' },
     { ico: '🗣️', title: 'Assertive communication', desc: 'Say it firmly, not fiercely', route: '#/anger/assertive' },
