@@ -173,6 +173,17 @@ export const TOOLKITS = {
     { ico: '🎓', title: 'Preparing for Retirement', desc: 'Course · 8 lessons', route: '#/course/retire' },
     { ico: '💬', title: 'Retirement counselling', desc: 'Talk to a specialist', route: '#/counselling?cat=Retirement counselling' },
   ],
+  family: [
+    { ico: '💬', title: 'Healthy communication', desc: 'Listen, speak & repair well', route: '#/family/communication' },
+    { ico: '🗣️', title: 'Say it kindly (assertive)', desc: 'Firm and respectful', route: '#/anger/assertive' },
+    { ico: '🚧', title: 'Work–life boundaries', desc: 'Keep work from spilling home', route: '#/stress/boundaries' },
+    { ico: '🧒', title: 'Parenting & work', desc: 'Balancing both', route: '#/family/parenting' },
+    { ico: '🧓', title: 'Caregiving & ageing parents', desc: 'The sandwich generation', route: '#/family/caregiving' },
+    { ico: '🕊️', title: 'Grief & bereavement', desc: 'Support through loss', route: '#/grief' },
+    { ico: '📓', title: 'Reflection journal', desc: 'Notice what matters at home', route: '#/journal/reflection' },
+    { ico: '🎓', title: 'Healthy Relationships', desc: 'Course · 5 lessons', route: '#/course/rel' },
+    { ico: '💞', title: 'Talk to a counsellor', desc: 'Couples & family counselling', route: '#/counselling?cat=Couples counselling' },
+  ],
 };
 
 /* ---- Counselling categories & demo providers ---- */

@@ -2,7 +2,7 @@
    views/family.js — Family & Relationship Support 👨‍👩‍👧
    =========================================================== */
 import { html, esc, appbar, sectionH, rows, crisisNote } from '../ui.js';
-import { FAMILY_TOPICS } from '../data.js';
+import { FAMILY_TOPICS, TOOLKITS } from '../data.js';
 
 function hub() {
   return {
@@ -12,14 +12,46 @@ function hub() {
         <h1 style="font-size:1.25rem">❤️ Home matters too</h1>
         <p>Work stress follows us home — and home stress follows us to work. Support for the relationships that hold you.</p>
       </div>
+      ${sectionH('Your family & relationship toolkit')}
+      ${rows(TOOLKITS.family)}
       ${sectionH('What do you need?')}
       ${rows(FAMILY_TOPICS)}
-      ${sectionH('Learn together')}
-      ${rows([
-        { ico: '🎓', title: 'Healthy Relationships course', desc: '5 lessons · certificate', href: '#/course/rel' },
-        { ico: '🧠', title: 'Emotional Intelligence course', desc: 'Understand & manage emotions', href: '#/course/eq' },
-      ])}
       ${crisisNote()}
+      <div class="fab-space"></div>`,
+  };
+}
+
+/* ---- Healthy communication guide ---- */
+function communication() {
+  return {
+    html: html`
+      ${appbar('Healthy communication', 'Listen · speak · repair')}
+      <div class="card"><h3>Listen to understand</h3>
+        <ul class="bul">
+          <li>Give full attention — put the phone down, turn towards them.</li>
+          <li>Reflect back what you heard before you reply ("So you felt…").</li>
+          <li>Ask, don't assume: "Can you help me understand?"</li>
+        </ul>
+      </div>
+      <div class="card"><h3>Speak so you're heard</h3>
+        <p class="muted">Swap blame for ownership. Instead of "You never…", try:</p>
+        <div class="callout info">"When <em>[what happened]</em>, I felt <em>[emotion]</em>, because <em>[why it matters]</em>. I'd really like <em>[a clear request]</em>."</div>
+        <a class="btn" style="margin-top:10px" href="#/anger/assertive">Build an "I" statement ›</a>
+      </div>
+      <div class="card"><h3>Repair after conflict</h3>
+        <ul class="bul">
+          <li>Take a short break if things get heated — agree to come back to it.</li>
+          <li>Own your part first; it lowers everyone's defences.</li>
+          <li>Focus on the next step together, not on who "won".</li>
+        </ul>
+      </div>
+      <div class="card"><h3>Stay connected</h3>
+        <p class="muted">A short weekly check-in keeps small things from becoming big ones: "What went well for us this week? What do you need from me?"</p>
+      </div>
+      <div class="btnrow">
+        <a class="btn" href="#/journal/reflection">Reflect in your journal</a>
+        <a class="btn primary" href="#/counselling?cat=Couples counselling">Talk to a counsellor</a>
+      </div>
       <div class="fab-space"></div>`,
   };
 }
@@ -59,6 +91,7 @@ function caregiving() {
 
 export const familyRoutes = {
   '/family': hub,
+  '/family/communication': communication,
   '/family/parenting': parenting,
   '/family/caregiving': caregiving,
 };
