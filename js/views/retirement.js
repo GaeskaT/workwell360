@@ -3,7 +3,7 @@
    =========================================================== */
 import { store, now, fmtDate } from '../store.js';
 import { html, esc, toast, go, appbar, sectionH, rows, scoreBar, ring } from '../ui.js';
-import { RETIRE_PILLARS, RETIRE_READINESS, RETIRE_JOURNEY } from '../data.js';
+import { RETIRE_PILLARS, RETIRE_READINESS, RETIRE_JOURNEY, TOOLKITS } from '../data.js';
 
 function hub() {
   const s = store.get();
@@ -36,15 +36,8 @@ function hub() {
         </a>`
         : `<a class="btn primary" href="#/retirement/readiness" style="margin-bottom:14px">Get your Retirement Readiness Score</a>`}
 
-      ${sectionH('Explore your transition')}
-      ${rows([
-        { ico: '📊', title: 'Retirement Readiness Score', desc: 'Six dimensions, your priorities', href: '#/retirement/readiness' },
-        { ico: '🗺️', title: 'The 7-stage journey', desc: 'Prepare → Launch → Thrive', href: '#/retirement/journey' },
-        { ico: '🧩', title: 'The four transition pillars', desc: 'Uncertainty · Engagement · Cashflows · Relationships', href: '#/retirement/pillars' },
-        { ico: '🎓', title: 'Preparing for Retirement course', desc: '8 lessons · certificate', href: '#/course/retire' },
-        { ico: '💰', title: 'Financial Wellness course', desc: 'Plan your cashflows', href: '#/course/finance' },
-        { ico: '💼', title: 'Retirement counselling', desc: 'Talk to a specialist', href: '#/counselling?cat=Retirement counselling' },
-      ])}
+      ${sectionH('Your retirement toolkit')}
+      ${rows(TOOLKITS.retirement)}
 
       <div class="card"><h3>Flagship programme</h3>
         <p class="muted">The <strong>12-month Retirement Transition Programme</strong> bundles readiness assessment, purpose planning, financial-wellness education, relationship preparation, health & lifestyle planning, counselling and post-retirement follow-up.</p>
@@ -172,9 +165,104 @@ function pillars() {
   };
 }
 
+/* ---- Purpose & engagement planner ---- */
+function purpose() {
+  const ideas = ['Volunteering', 'Mentoring', 'A small business', 'Learning a skill', 'Faith community', 'Travel', 'Gardening / farming', 'Grandchildren', 'Sports & fitness', 'Arts & music', 'Writing', 'Community leadership', 'Consulting part-time', 'A new hobby'];
+  const saved = store.get().toolkit.retirePurpose || [];
+  return {
+    html: html`
+      ${appbar('Purpose & engagement', 'What will fill your days')}
+      <div class="card"><p class="muted">Work gives structure, identity and connection. Plan what will provide those next — pick what appeals, then add your own.</p>
+        <div class="chips" id="chips">${ideas.map(t => `<button class="chip ${saved.includes(t) ? 'on' : ''}" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div>
+        <div style="display:flex;gap:8px;margin-top:10px"><input id="own" placeholder="Add your own idea"/><button class="btn sm" id="add">Add</button></div>
+      </div>
+      <div class="card"><h3>My purpose plan</h3><div id="mine" class="tag-row"></div>
+        <a class="btn" style="margin-top:12px" href="#/journal/retire">Reflect in your journal ›</a></div>
+      <div class="fab-space"></div>`,
+    onMount(root) {
+      const paint = () => { const cur = store.get().toolkit.retirePurpose || []; root.querySelector('#mine').innerHTML = cur.length ? cur.map(t => `<span class="chip on">${esc(t)}</span>`).join('') : '<span class="muted">Nothing chosen yet</span>'; };
+      const toggle = (t) => { store.update(s => { const a = s.toolkit.retirePurpose = s.toolkit.retirePurpose || []; const i = a.indexOf(t); i >= 0 ? a.splice(i, 1) : a.push(t); }); paint(); };
+      paint();
+      root.querySelectorAll('#chips .chip').forEach(c => c.addEventListener('click', () => { c.classList.toggle('on'); toggle(c.dataset.t); }));
+      root.querySelector('#add').addEventListener('click', () => {
+        const v = root.querySelector('#own').value.trim(); if (!v) return;
+        store.update(s => { (s.toolkit.retirePurpose = s.toolkit.retirePurpose || []).push(v); });
+        root.querySelector('#own').value = ''; paint(); toast('Added');
+      });
+    },
+  };
+}
+
+/* ---- Cashflow readiness planner ---- */
+function cashflow() {
+  const items = [
+    ['I know roughly what income I\'ll have after work', 'Pension, savings, investments, other'],
+    ['I have estimated my monthly retirement expenses', 'What life will actually cost'],
+    ['I have an emergency fund (3–6 months)', 'A buffer for surprises'],
+    ['My debts have a clear repayment plan', 'Aim to enter retirement lighter'],
+    ['I have some income beyond a single pension', 'Diversify where you can'],
+    ['I have reviewed my plan with a professional', 'A coach or financial adviser'],
+  ];
+  const set = new Set(store.get().toolkit.retireCashflow || []);
+  return {
+    html: html`
+      ${appbar('Cashflow readiness', 'Money for the next chapter')}
+      <div class="card"><p class="muted">Financial peace of mind is a huge part of a healthy retirement. Tick what's in place — the gaps are your to-do list.</p></div>
+      <div class="card"><div class="list" id="cf">
+        ${items.map(([t, d], i) => `<label class="row" style="cursor:pointer"><span class="ico">${set.has(i) ? '✅' : '⭕'}</span>
+          <span class="rt"><span class="rtl">${esc(t)}</span><span class="rd">${esc(d)}</span></span>
+          <input type="checkbox" data-i="${i}" ${set.has(i) ? 'checked' : ''} style="width:22px;height:22px"/></label>`).join('')}
+      </div><div id="tally" class="muted center" style="margin-top:10px">${set.size}/${items.length} in place</div></div>
+      <div class="btnrow">
+        <a class="btn primary" href="#/course/finance">Financial Wellness course</a>
+        <a class="btn" href="#/counselling?cat=Financial stress">Talk it through</a>
+      </div>
+      <div class="fab-space"></div>`,
+    onMount(root) {
+      root.querySelectorAll('#cf input').forEach(cb => cb.addEventListener('change', () => {
+        const i = +cb.dataset.i; cb.checked ? set.add(i) : set.delete(i);
+        store.update(s => { s.toolkit.retireCashflow = [...set]; });
+        cb.closest('.row').querySelector('.ico').textContent = cb.checked ? '✅' : '⭕';
+        root.querySelector('#tally').textContent = `${set.size}/${items.length} in place`;
+      }));
+    },
+  };
+}
+
+/* ---- Relationships & home guide ---- */
+function relationships() {
+  return {
+    html: html`
+      ${appbar('Relationships & home', 'Prepare the people around you')}
+      <div class="card"><h3>Retirement changes home life too</h3>
+        <p class="muted">More time together, shifting routines and roles, and a changing sense of identity all affect the people closest to you. Talking about it early prevents friction later.</p>
+      </div>
+      <div class="card"><h3>Conversations worth having</h3>
+        <ul class="bul">
+          <li>How do we each picture a typical day and week?</li>
+          <li>What do we want to do together — and separately?</li>
+          <li>How will we share space, chores and decisions at home?</li>
+          <li>What does each of us need for our own purpose and friendships?</li>
+          <li>How will we handle money and spending together?</li>
+        </ul>
+      </div>
+      <div class="card"><h3>A gentle way to start</h3>
+        <div class="callout info">"This next chapter affects both of us. I'd love for us to plan it together — what are you looking forward to, and what are you unsure about?"</div>
+      </div>
+      <div class="btnrow">
+        <a class="btn" href="#/family">Family & relationships</a>
+        <a class="btn primary" href="#/counselling?cat=Couples counselling">Talk to a counsellor</a>
+      </div>
+      <div class="fab-space"></div>`,
+  };
+}
+
 export const retirementRoutes = {
   '/retirement': hub,
   '/retirement/readiness': readiness,
   '/retirement/journey': journey,
   '/retirement/pillars': pillars,
+  '/retirement/purpose': purpose,
+  '/retirement/cashflow': cashflow,
+  '/retirement/relationships': relationships,
 };

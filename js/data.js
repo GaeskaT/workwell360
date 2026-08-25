@@ -162,6 +162,17 @@ export const TOOLKITS = {
     { ico: '📊', title: 'Workplace stress check', desc: 'See where the pressure is', route: '#/assess/stress' },
     { ico: '🧭', title: 'Career counselling', desc: 'Talk through your path', route: '#/counselling?cat=Career counselling' },
   ],
+  retirement: [
+    { ico: '📊', title: 'Retirement Readiness Score', desc: 'Six dimensions, your priorities', route: '#/retirement/readiness' },
+    { ico: '🗺️', title: 'The 7-stage journey', desc: 'Prepare → Launch → Thrive', route: '#/retirement/journey' },
+    { ico: '🧩', title: 'The four transition pillars', desc: 'Uncertainty · Engagement · Cashflows · Relationships', route: '#/retirement/pillars' },
+    { ico: '🎯', title: 'Purpose & engagement planner', desc: 'What will fill your days', route: '#/retirement/purpose' },
+    { ico: '💰', title: 'Cashflow readiness planner', desc: 'Money for the next chapter', route: '#/retirement/cashflow' },
+    { ico: '❤️', title: 'Relationships & home guide', desc: 'Prepare the people around you', route: '#/retirement/relationships' },
+    { ico: '📓', title: 'Retirement journal', desc: 'Reflect on the transition', route: '#/journal/retire' },
+    { ico: '🎓', title: 'Preparing for Retirement', desc: 'Course · 8 lessons', route: '#/course/retire' },
+    { ico: '💬', title: 'Retirement counselling', desc: 'Talk to a specialist', route: '#/counselling?cat=Retirement counselling' },
+  ],
 };
 
 /* ---- Counselling categories & demo providers ---- */

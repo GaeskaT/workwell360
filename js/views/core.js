@@ -294,11 +294,12 @@ function relax() {
 
 /* ---------- Journal ---------- */
 function journal({ id }) {
-  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal' };
+  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal', retire: 'Retirement journal' };
   const prompts = {
     gratitude: 'Name one thing that went well today, and why.',
     reflection: 'What drained you today, and what restored you?',
     grief: 'However you feel today is okay. Write whatever needs to come out.',
+    retire: 'What are you looking forward to — or worried about — in this next chapter?',
   };
   const entries = store.get().journals[id] || [];
   return {
