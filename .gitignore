@@ -1,0 +1,10 @@
+# Build / wrapper artifacts
+node_modules/
+playstore/*.aab
+playstore/*.apk
+playstore/*.keystore
+playstore/android.keystore
+playstore/app/
+*.jks
+.DS_Store
+Thumbs.db

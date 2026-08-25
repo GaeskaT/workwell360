@@ -1,0 +1,28 @@
+{
+  "packageId": "app.workwell360.twa",
+  "host": "REPLACE_WITH_YOUR_DOMAIN.com",
+  "name": "WorkWell 360",
+  "launcherName": "WorkWell 360",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#0f766e",
+  "themeColorDark": "#0b1220",
+  "navigationColor": "#0f766e",
+  "navigationColorDark": "#0b1220",
+  "backgroundColor": "#f6f8f9",
+  "enableNotifications": false,
+  "startUrl": "/index.html",
+  "iconUrl": "https://REPLACE_WITH_YOUR_DOMAIN.com/icons/icon-512.png",
+  "maskableIconUrl": "https://REPLACE_WITH_YOUR_DOMAIN.com/icons/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    { "name": "Daily check-in", "shortName": "Check-in", "url": "/index.html#/dashboard" },
+    { "name": "What do you need today?", "shortName": "Today", "url": "/index.html#/need-today" },
+    { "name": "Book counselling", "shortName": "Counselling", "url": "/index.html#/counselling" }
+  ],
+  "fallbackType": "customtabs",
+  "features": {},
+  "signingKey": { "path": "./android.keystore", "alias": "workwell360" }
+}

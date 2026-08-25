@@ -1,0 +1,33 @@
+{
+  "name": "WorkWell 360 — Workplace Wellness",
+  "short_name": "WorkWell 360",
+  "description": "Healthy People. Healthy Workplaces. Healthy Futures. A complete workplace mental-wellness and retirement-transition ecosystem.",
+  "id": "/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f8f9",
+  "theme_color": "#0f766e",
+  "categories": ["health", "lifestyle", "medical", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Daily check-in", "short_name": "Check-in", "url": "./index.html#/dashboard" },
+    { "name": "What do you need today?", "short_name": "Today", "url": "./index.html#/need-today" },
+    { "name": "Book counselling", "short_name": "Counselling", "url": "./index.html#/counselling" },
+    { "name": "Retirement readiness", "short_name": "Retirement", "url": "./index.html#/retirement/readiness" }
+  ],
+  "screenshots": [
+    { "src": "screenshots/home.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Home & daily check-in" },
+    { "src": "screenshots/need.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "What do you need today?" },
+    { "src": "screenshots/retirement.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Retirement readiness" }
+  ]
+}

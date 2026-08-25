@@ -1,0 +1,263 @@
+/* ===========================================================
+   data.js — content for the 8-pillar ecosystem
+   =========================================================== */
+
+export const PILLARS = [
+  { id: 'mental',      emoji: '🧠', name: 'Mental Health',        desc: 'Everyday emotional wellbeing', route: '#/counselling' },
+  { id: 'anger',       emoji: '😡', name: 'Anger Management',     desc: 'Pause, reflect, respond',      route: '#/anger' },
+  { id: 'stress',      emoji: '😰', name: 'Stress Management',    desc: 'Track & lighten the load',     route: '#/stress' },
+  { id: 'burnout',     emoji: '🔥', name: 'Burnout Recovery',     desc: 'Recognise & recover',          route: '#/burnout' },
+  { id: 'counselling', emoji: '💼', name: 'Workplace Counselling',desc: 'Talk to a professional',       route: '#/counselling' },
+  { id: 'retirement',  emoji: '🔄', name: 'Retirement Transition',desc: 'From employment to a good life',route: '#/retirement' },
+  { id: 'family',      emoji: '👨‍👩‍👧', name: 'Family & Relationships', desc: 'Support at home',          route: '#/family' },
+  { id: 'employer',    emoji: '📊', name: 'Employer & Analytics', desc: 'For HR & leaders',             route: '#/employer' },
+];
+
+/* ---- Daily check-in moods ---- */
+export const MOODS = [
+  { v: 5, e: '😊', l: 'Doing well' },
+  { v: 4, e: '🙂', l: 'Okay' },
+  { v: 3, e: '😐', l: 'Struggling' },
+  { v: 2, e: '😟', l: 'Very stressed' },
+  { v: 1, e: '😔', l: 'Not coping' },
+  { v: 0, e: '🚨', l: 'I need help' },
+];
+
+/* ---- "What do you need today?" router ---- */
+export const NEED_PATHS = [
+  { e: '😡', label: 'I am angry',                 route: '#/anger',       tag: 'Anger pathway' },
+  { e: '😰', label: 'I am stressed',              route: '#/stress',      tag: 'Stress pathway' },
+  { e: '🔥', label: 'I am exhausted',             route: '#/burnout',     tag: 'Burnout pathway' },
+  { e: '💔', label: 'I am grieving',              route: '#/counselling?cat=Grief and loss', tag: 'Grief pathway' },
+  { e: '💼', label: 'I am struggling at work',    route: '#/counselling?cat=Workplace conflict', tag: 'Workplace pathway' },
+  { e: '🔄', label: 'I am approaching retirement',route: '#/retirement',  tag: 'Retirement pathway' },
+  { e: '❤️', label: 'My relationship is struggling', route: '#/family',   tag: 'Relationship pathway' },
+  { e: '🧠', label: 'I need professional help',   route: '#/counselling', tag: 'Counselling pathway' },
+];
+
+/* ---- Assessments (0-4 Likert; score = sum normalised to 100) ---- */
+export const ASSESSMENTS = {
+  anger: {
+    id: 'anger', title: 'Anger self-assessment', pillar: 'anger',
+    intro: 'Answer honestly. This is a reflection tool, not a diagnosis.',
+    questions: [
+      'I lose my temper more easily than I would like.',
+      'When criticised, I react before I think.',
+      'My body tenses up (jaw, fists, heart racing) when I am angry.',
+      'My anger affects my colleagues or family.',
+      'I say or do things in anger that I later regret.',
+      'Small workplace frustrations build up over the day.',
+    ],
+    bands: [
+      { max: 30, band: 'Low', note: 'You generally manage anger well. Keep using healthy outlets.' },
+      { max: 60, band: 'Moderate', note: 'Some triggers get the better of you. The toolkit below will help.' },
+      { max: 100, band: 'Elevated', note: 'Anger is affecting your relationships. Consider the course + a counsellor.' },
+    ],
+  },
+  stress: {
+    id: 'stress', title: 'Stress check', pillar: 'stress',
+    intro: 'Think about the last two weeks at work and home.',
+    questions: [
+      'My workload feels unmanageable.',
+      'I struggle to switch off after work.',
+      'Deadlines or targets keep me on edge.',
+      'Financial pressure weighs on me.',
+      'My sleep is disturbed by worry.',
+      'I have little time for the things that restore me.',
+    ],
+    bands: [
+      { max: 30, band: 'Low', note: 'Your stress is in a healthy range. Maintain your boundaries.' },
+      { max: 60, band: 'Moderate', note: 'Stress is climbing. Try the breathing + boundary tools this week.' },
+      { max: 100, band: 'High', note: 'Sustained high stress can lead to burnout. Talk to someone early.' },
+    ],
+  },
+  burnout: {
+    id: 'burnout', title: 'Burnout self-check', pillar: 'burnout',
+    intro: 'Burnout builds slowly: exhaustion → detachment → reduced effectiveness.',
+    questions: [
+      'I feel emotionally drained by my work.',
+      'I have become more cynical or detached about my job.',
+      'I doubt the value or impact of my work.',
+      'Even after rest, I do not feel recovered.',
+      'I am running on empty to get through the day.',
+      'I dread the start of the work week.',
+    ],
+    bands: [
+      { max: 30, band: 'Low risk', note: 'Energy reserves are healthy. Keep protecting your recovery time.' },
+      { max: 55, band: 'Warning signs', note: 'Early burnout signals. Prioritise rest and reduce load now.' },
+      { max: 100, band: 'High risk', note: 'This looks like burnout. A recovery plan + counsellor is strongly advised.' },
+    ],
+  },
+};
+
+/* ---- Toolkits per pillar ---- */
+export const TOOLKITS = {
+  anger: [
+    { ico: '📓', title: 'Anger diary', desc: 'Log triggers, body signals & responses', route: '#/anger/diary' },
+    { ico: '🌬️', title: 'Pause & breathe (4-7-8)', desc: '90-second guided reset', route: '#/tool/breathe?ctx=anger' },
+    { ico: '🎯', title: 'Trigger identification', desc: 'Map what sets you off', route: '#/anger/triggers' },
+    { ico: '⏸️', title: 'STOP · PAUSE · REFLECT · RESPOND', desc: 'Workplace scenario coach', route: '#/anger/scenario' },
+    { ico: '🗣️', title: 'Assertive communication', desc: 'Say it firmly, not fiercely', route: '#/anger/assertive' },
+    { ico: '🎓', title: 'Anger-management course', desc: '6 short lessons', route: '#/course/anger' },
+  ],
+  stress: [
+    { ico: '📊', title: 'Stress dashboard', desc: 'Track workload, sleep & balance', route: '#/stress/diary' },
+    { ico: '🌬️', title: 'Box breathing', desc: '4-4-4-4 calm-down', route: '#/tool/breathe?ctx=stress' },
+    { ico: '🧘', title: 'Progressive relaxation', desc: 'Release tension head-to-toe', route: '#/tool/relax' },
+    { ico: '⏱️', title: 'Time & priority tool', desc: 'Sort urgent vs important', route: '#/stress/time' },
+    { ico: '🚧', title: 'Boundary-setting guide', desc: 'Protect your off-hours', route: '#/stress/boundaries' },
+    { ico: '💬', title: 'Workload conversation guide', desc: 'Script for your manager', route: '#/stress/workload' },
+    { ico: '✅', title: 'Self-care checklist', desc: 'Daily basics that protect you', route: '#/stress/selfcare' },
+    { ico: '🎓', title: 'Managing workplace stress', desc: 'Course · 5 lessons', route: '#/course/stress' },
+  ],
+  burnout: [
+    { ico: '🔋', title: 'Energy tracker', desc: 'Energy, sleep & workload trend', route: '#/burnout/energy' },
+    { ico: '😴', title: 'Sleep tracker', desc: 'Protect your recovery', route: '#/burnout/energy' },
+    { ico: '🛌', title: 'Rest & leave planner', desc: 'Plan real recovery time', route: '#/burnout/rest' },
+    { ico: '🚧', title: 'Boundary exercises', desc: 'Reduce the constant load', route: '#/stress/boundaries' },
+    { ico: '🗺️', title: 'Recovery plan', desc: 'Your step-by-step comeback', route: '#/burnout/recovery' },
+    { ico: '↩️', title: 'Return-to-work support', desc: 'Ease back sustainably', route: '#/burnout/rtw' },
+    { ico: '🎓', title: 'Preventing burnout', desc: 'Course · 6 lessons', route: '#/course/burnout' },
+  ],
+};
+
+/* ---- Counselling categories & demo providers ---- */
+export const COUNSELLING_CATEGORIES = [
+  'Individual counselling', 'Couples counselling', 'Family counselling', 'Grief and loss',
+  'Anger management', 'Stress', 'Burnout', 'Anxiety', 'Workplace conflict', 'Career counselling',
+  'Financial stress', 'Substance-use concerns', 'Retirement counselling', 'Relationship issues',
+  'Bereavement', 'Adjustment to major life changes',
+];
+
+export const PROVIDER_TYPES = ['Counsellor', 'Psychologist', 'Therapist', 'Psychiatrist', 'Coach', 'EAP provider', 'Support group'];
+
+export const PROVIDERS = [
+  { id: 'p1', name: 'Priscilla Maina', type: 'Counsellor', verified: true, specialties: ['Workplace conflict', 'Stress', 'Retirement counselling'], modes: ['Video', 'In-person', 'Chat'], rate: 2000, langs: ['English', 'Kiswahili'], rating: 4.9, bio: 'Lead workplace-wellness counsellor. 12 yrs supporting employees through stress, conflict and retirement transitions.' },
+  { id: 'p2', name: 'Dr. Amina Yusuf', type: 'Psychologist', verified: true, specialties: ['Anxiety', 'Burnout', 'Adjustment to major life changes'], modes: ['Video', 'In-person'], rate: 3500, langs: ['English'], rating: 4.8, bio: 'Clinical psychologist focused on burnout recovery and anxiety.' },
+  { id: 'p3', name: 'Samuel Otieno', type: 'Therapist', verified: true, specialties: ['Grief and loss', 'Bereavement', 'Family counselling'], modes: ['Video', 'Chat'], rate: 2500, langs: ['English', 'Kiswahili', 'Dholuo'], rating: 4.9, bio: 'Grief and family therapist. Gentle, faith-sensitive approach.' },
+  { id: 'p4', name: 'Grace Wambui', type: 'Coach', verified: true, specialties: ['Career counselling', 'Financial stress', 'Retirement counselling'], modes: ['Video'], rate: 1800, langs: ['English', 'Kiswahili'], rating: 4.7, bio: 'Career & financial-wellness coach. Practical planning for life changes.' },
+  { id: 'p5', name: 'Peter Njoroge', type: 'Psychiatrist', verified: true, specialties: ['Anxiety', 'Substance-use concerns'], modes: ['Video', 'In-person'], rate: 5000, langs: ['English'], rating: 4.8, bio: 'Consultant psychiatrist. Medication review and complex care.' },
+  { id: 'g1', name: 'Managing Stress Together', type: 'Support group', verified: true, specialties: ['Stress', 'Burnout'], modes: ['Video'], rate: 0, langs: ['English'], rating: 4.6, bio: 'Weekly peer support group facilitated by a counsellor. Free for members.' },
+];
+
+/* ---- Retirement Transition content ---- */
+export const RETIRE_PILLARS = [
+  { id: 'uncertainty', emoji: '🌫️', name: 'Uncertainty', items: ['Identity', 'Health', 'Future', 'Ageing', 'Change'] },
+  { id: 'engagement',  emoji: '🌱', name: 'Engagement',  items: ['Purpose', 'Hobbies', 'Volunteering', 'Entrepreneurship', 'Learning', 'Social connections'] },
+  { id: 'cashflows',   emoji: '💰', name: 'Cashflows',   items: ['Budgeting', 'Savings', 'Investments', 'Passive income', 'Financial independence', 'Lifestyle planning'] },
+  { id: 'relationships', emoji: '❤️', name: 'Relationships', items: ['Marriage', 'Family', 'Adult children', 'Friendships', 'Empty nest', 'Social networks'] },
+];
+
+export const RETIRE_READINESS = {
+  intro: 'Six dimensions of retirement readiness. Rate how prepared you feel (0 = not at all, 4 = fully ready).',
+  dims: [
+    { id: 'financial', label: 'Financial', emoji: '💰', q: 'I have a clear, funded plan for income after I stop working.' },
+    { id: 'emotional', label: 'Emotional', emoji: '🧠', q: 'I feel emotionally ready to let go of my work identity.' },
+    { id: 'health', label: 'Health', emoji: '💪', q: 'I am investing in my physical health for the years ahead.' },
+    { id: 'relationships', label: 'Relationships', emoji: '❤️', q: 'My close relationships are ready for this life change.' },
+    { id: 'purpose', label: 'Purpose', emoji: '🎯', q: 'I know what will give my days meaning after retirement.' },
+    { id: 'social', label: 'Social', emoji: '👥', q: 'I have social connections beyond my workplace.' },
+  ],
+};
+
+export const RETIRE_JOURNEY = [
+  { when: '24 months before', title: 'Prepare', desc: 'Assess readiness, start conversations, imagine the next chapter.', phase: 'prepare' },
+  { when: '18 months before', title: 'Plan', desc: 'Build the financial, purpose and health plans.', phase: 'plan' },
+  { when: '12 months before', title: 'Transition', desc: 'Test new routines, hobbies and social circles.', phase: 'transition' },
+  { when: '6 months before',  title: 'Adjust', desc: 'Hand over, wind down, prepare relationships at home.', phase: 'adjust' },
+  { when: 'Retirement day',   title: 'Launch', desc: 'Mark the milestone. Celebrate the contribution.', phase: 'launch' },
+  { when: '0–12 months after',title: 'Rebuild', desc: 'Establish a new rhythm, purpose and structure.', phase: 'rebuild' },
+  { when: '1–3 years after',  title: 'Thrive', desc: 'Live a full, connected, healthy retirement.', phase: 'thrive' },
+];
+
+/* ---- Family / relationship pathways ---- */
+export const FAMILY_TOPICS = [
+  { ico: '💞', title: 'Couples & marriage', desc: 'Communication, conflict, reconnection', route: '#/counselling?cat=Couples counselling' },
+  { ico: '👪', title: 'Family counselling', desc: 'Whole-family support', route: '#/counselling?cat=Family counselling' },
+  { ico: '🧒', title: 'Parenting & children', desc: 'Balancing work and home', route: '#/family/parenting' },
+  { ico: '🕊️', title: 'Grief & bereavement', desc: 'Loss support for you and family', route: '#/counselling?cat=Grief and loss' },
+  { ico: '🧓', title: 'Caregiving & ageing parents', desc: 'Support the sandwich generation', route: '#/family/caregiving' },
+  { ico: '⚖️', title: 'Work–life balance', desc: 'Protect home from work spillover', route: '#/stress/boundaries' },
+];
+
+/* ---- Store: journals, courses, tools ---- */
+export const PRODUCTS = [
+  // Journals
+  { id: 'j-men', cat: 'Journals', name: 'Self-Care Journal for Men', price: 850, ico: '📓', desc: '90-day guided reflection built for men at work.' },
+  { id: 'j-women', cat: 'Journals', name: 'Self-Care Journal for Women', price: 850, ico: '📔', desc: '90-day guided self-care and boundaries journal.' },
+  { id: 'j-stress', cat: 'Journals', name: 'Stress Journal', price: 700, ico: '🗒️', desc: 'Daily stress log with triggers and wins.' },
+  { id: 'j-burnout', cat: 'Journals', name: 'Burnout Recovery Journal', price: 950, ico: '📕', desc: 'A 12-week recovery companion.' },
+  { id: 'j-anger', cat: 'Journals', name: 'Anger Management Journal', price: 750, ico: '📙', desc: 'Track triggers, responses and progress.' },
+  { id: 'j-retire', cat: 'Journals', name: 'Retirement Transition Journal', price: 1200, ico: '📘', desc: 'Plan purpose, money and relationships.' },
+  { id: 'j-grief', cat: 'Journals', name: 'Grief Journal', price: 750, ico: '🕯️', desc: 'A gentle space for loss and remembrance.' },
+  // Courses
+  { id: 'c-stress', cat: 'Courses', name: 'Managing Workplace Stress', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'stress' },
+  { id: 'c-burnout', cat: 'Courses', name: 'Preventing Burnout', price: 1800, ico: '🎓', desc: '6 lessons · certificate', courseId: 'burnout' },
+  { id: 'c-anger', cat: 'Courses', name: 'Managing Anger', price: 1500, ico: '🎓', desc: '6 lessons · certificate', courseId: 'anger' },
+  { id: 'c-eq', cat: 'Courses', name: 'Emotional Intelligence', price: 2000, ico: '🎓', desc: '5 lessons · certificate', courseId: 'eq' },
+  { id: 'c-balance', cat: 'Courses', name: 'Work–Life Balance', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'balance' },
+  { id: 'c-retire', cat: 'Courses', name: 'Preparing for Retirement', price: 3500, ico: '🎓', desc: '8 lessons · certificate', courseId: 'retire' },
+  { id: 'c-finance', cat: 'Courses', name: 'Financial Wellness', price: 2500, ico: '🎓', desc: '6 lessons · certificate', courseId: 'finance' },
+  { id: 'c-rel', cat: 'Courses', name: 'Healthy Relationships', price: 1800, ico: '🎓', desc: '5 lessons · certificate', courseId: 'rel' },
+];
+
+/* ---- Courses (lesson outlines) ---- */
+export const COURSES = {
+  anger: { id: 'anger', title: 'Managing Anger', lessons: ['Understanding your anger', 'Body signals & early warning', 'The STOP–PAUSE–REFLECT–RESPOND method', 'Assertive vs aggressive communication', 'Workplace conflict resolution', 'Building your relapse plan'] },
+  stress: { id: 'stress', title: 'Managing Workplace Stress', lessons: ['What stress does to you', 'Mapping your stressors', 'Breathing & relaxation skills', 'Time & boundary management', 'Sustaining the change'] },
+  burnout: { id: 'burnout', title: 'Preventing Burnout', lessons: ['Spotting burnout early', 'The exhaustion–detachment cycle', 'Rest that actually restores', 'Redesigning your workload', 'Boundaries & saying no', 'Your recovery & return plan'] },
+  eq: { id: 'eq', title: 'Emotional Intelligence', lessons: ['Self-awareness', 'Self-regulation', 'Empathy at work', 'Social skills', 'Applying EQ under pressure'] },
+  balance: { id: 'balance', title: 'Work–Life Balance', lessons: ['Auditing your week', 'Priorities & values', 'Protecting off-hours', 'Digital boundaries', 'Sustaining balance'] },
+  retire: { id: 'retire', title: 'Preparing for Retirement', lessons: ['The four transition pillars', 'Your identity beyond work', 'Money & cashflow planning', 'Health for the long game', 'Purpose & engagement', 'Relationships & the empty nest', 'Building your weekly rhythm', 'The first 90 days'] },
+  finance: { id: 'finance', title: 'Financial Wellness', lessons: ['Money & wellbeing', 'Budgeting basics', 'Emergency fund & debt', 'Saving & investing', 'Passive income ideas', 'Planning for independence'] },
+  rel: { id: 'rel', title: 'Healthy Relationships', lessons: ['Communication foundations', 'Conflict without harm', 'Repair & reconnection', 'Boundaries in relationships', 'Growing together'] },
+};
+
+/* ---- Corporate packages ---- */
+export const PACKAGES = [
+  { id: 'basic', name: 'Basic', tagline: 'Wellbeing foundations', price: 'from Ksh 150 / employee / mo',
+    features: ['Employee self-care tools', 'Mental-health education library', 'Monthly wellbeing webinars', 'Basic wellness dashboard'], badge: 'free' },
+  { id: 'pro', name: 'Professional', tagline: 'Most popular', price: 'from Ksh 450 / employee / mo',
+    features: ['Everything in Basic', 'Counselling sessions (EAP)', 'Stress & burnout programmes', 'Anger-management programme', 'HR analytics dashboard', 'On-site employee workshops'], badge: 'pro', popular: true },
+  { id: 'enterprise', name: 'Enterprise', tagline: 'Whole-organisation', price: 'Custom contract',
+    features: ['Everything in Professional', 'Org-wide wellness assessment', 'Dedicated counsellors', 'Leadership wellness track', 'Retirement-transition programme', 'Custom training & certification', 'Quarterly org wellness reports', 'Dedicated account manager'], badge: 'new' },
+];
+
+/* ---- Employer aggregate demo data (anonymised, never individual) ---- */
+export const EMPLOYER_DEMO = {
+  org: 'Demo Organisation', employees: 420, active: 318,
+  orgScore: 74,
+  metrics: [
+    { id: 'stress', label: 'Stress', score: 58, trend: -3 },
+    { id: 'burnout', label: 'Burnout', score: 46, trend: +6 },
+    { id: 'anger', label: 'Anger / conflict', score: 78, trend: +1 },
+    { id: 'engagement', label: 'Engagement', score: 81, trend: +2 },
+    { id: 'retirement', label: 'Retirement readiness', score: 63, trend: 0 },
+  ],
+  depts: [
+    { name: 'Operations', burnoutRisk: 'High', note: 'Burnout risk increased this quarter' },
+    { name: 'Customer Care', burnoutRisk: 'Elevated', note: 'Stress trending up with call volumes' },
+    { name: 'Finance', burnoutRisk: 'Moderate', note: 'Stable; watch month-end peaks' },
+    { name: 'Field Sales', burnoutRisk: 'Moderate', note: 'Engagement strong, conflict low' },
+  ],
+  utilisation: { counselling: 27, workshops: 61, courses: 44, retirement: 18 },
+};
+
+/* ---- Counsellor portal demo ---- */
+export const COUNSELLOR_DEMO = {
+  name: 'Priscilla Maina', verified: true,
+  today: [
+    { time: '09:00', client: 'Client A', mode: 'Video', topic: 'Workplace conflict' },
+    { time: '11:30', client: 'Client B', mode: 'In-person', topic: 'Stress' },
+    { time: '14:00', client: 'Client C', mode: 'Chat', topic: 'Retirement counselling' },
+  ],
+  stats: { activeClients: 34, sessionsThisMonth: 96, avgRating: 4.9, followUpsDue: 5 },
+};
+
+/* ---- Crisis / emergency resources (Kenya-first, generic fallback) ---- */
+export const CRISIS = [
+  { name: 'Kenya Red Cross — free counselling', number: '1199', note: 'Toll-free psychosocial support' },
+  { name: 'Befrienders Kenya', number: '+254 722 178 177', note: 'Emotional support & suicide prevention' },
+  { name: 'Emergency services', number: '999 / 112', note: 'Immediate danger to life' },
+  { name: 'Your workplace EAP', number: 'See HR / benefits', note: 'Confidential employee assistance' },
+];
