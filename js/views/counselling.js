@@ -11,26 +11,24 @@ function hub({ cat }) {
   const bookings = store.get().bookings.filter(b => b.status !== 'cancelled');
   return {
     html: html`
-      ${appbar('Workplace Counselling', 'Talk to a verified professional')}
-      ${crisisNote()}
+      ${appbar('Workplace Counselling', 'Tools & verified professionals')}
+      <div class="hero" style="background:linear-gradient(140deg,#1e3a8a,#0d9488)">
+        <h1 style="font-size:1.25rem">💼 Support at work</h1>
+        <p>Self-help tools for the pressures of work — plus verified professionals whenever you need to talk.</p>
+      </div>
       ${bookings.length ? html`<div class="card"><h3>Your sessions</h3>
         ${bookings.slice(0, 3).map(b => `<div class="row"><span class="ico">🗓️</span><span class="rt"><span class="rtl">${esc(b.provider)} · ${esc(b.mode)}</span><span class="rd">${esc(b.category)} · ${esc(b.when)}</span></span><span class="chip on">${esc(b.status)}</span></div>`).join('')}
       </div>` : ''}
 
-      ${sectionH('Workplace self-help tools')}
       ${(() => { const wa = store.get().assessments.workplace; return wa
           ? `<div class="callout ${wa.score >= 61 ? 'warn' : 'info'}" style="margin-bottom:12px">Workplace wellbeing check: <strong>${wa.score}% · ${esc(wa.band)}</strong>. <a href="#/assess/workplace" style="text-decoration:underline;font-weight:700">Retake</a></div>`
           : `<a class="btn primary" href="#/assess/workplace" style="margin-bottom:14px">Take the workplace wellbeing check</a>`; })()}
+      ${sectionH('Workplace self-help tools')}
       ${rows(TOOLKITS.workplace)}
-
-      ${sectionH('Browse by need')}
-      <div class="chips" style="margin-bottom:8px">
-        <a class="chip ${active === 'All' ? 'on' : ''}" href="#/counselling">All</a>
-        ${COUNSELLING_CATEGORIES.map(c => `<a class="chip ${active === c ? 'on' : ''}" href="#/counselling?cat=${encodeURIComponent(c)}">${esc(c)}</a>`).join('')}
-      </div>
 
       ${sectionH(active === 'All' ? 'Verified providers' : active)}
       ${filtered.length ? filtered.map(providerCard).join('') : `<div class="empty"><div class="e">🔍</div><p>No providers for "${esc(active)}" yet.</p><a class="btn" href="#/counselling">See all</a></div>`}
+      ${crisisNote()}
       <div class="fab-space"></div>`,
   };
 }

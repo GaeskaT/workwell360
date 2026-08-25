@@ -77,10 +77,10 @@ export function crisisNote() {
     </div>`;
 }
 
-/** Render a list of {ico,title,desc,href} rows */
+/** Render a list of {ico,title,desc,href|route} rows */
 export function rows(items) {
   return html`<div class="list">${items.map(i => html`
-    <a class="row" href="${i.href || '#'}">
+    <a class="row" href="${i.href || i.route || '#'}">
       <span class="ico">${i.ico || '•'}</span>
       <span class="rt"><span class="rtl">${esc(i.title)}</span>${i.desc ? `<span class="rd">${esc(i.desc)}</span>` : ''}</span>
       <span class="go">›</span>
