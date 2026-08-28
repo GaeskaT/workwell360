@@ -1,7 +1,7 @@
 {
   "name": "WorkWell 360 — Workplace Wellness",
   "short_name": "WorkWell 360",
-  "description": "Wellness. Performance. Purpose. A complete workplace mental-wellness and retirement-transition ecosystem.",
+  "description": "Wellness. Performance. Purpose. A complete workplace mental-wellness ecosystem.",
   "id": "/",
   "start_url": "./index.html",
   "scope": "./",
@@ -22,12 +22,10 @@
   "shortcuts": [
     { "name": "Daily check-in", "short_name": "Check-in", "url": "./index.html#/dashboard" },
     { "name": "What do you need today?", "short_name": "Today", "url": "./index.html#/need-today" },
-    { "name": "Book counselling", "short_name": "Counselling", "url": "./index.html#/counselling" },
-    { "name": "Retirement readiness", "short_name": "Retirement", "url": "./index.html#/retirement/readiness" }
+    { "name": "Book counselling", "short_name": "Counselling", "url": "./index.html#/counselling" }
   ],
   "screenshots": [
     { "src": "screenshots/home.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Home & daily check-in" },
-    { "src": "screenshots/need.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "What do you need today?" },
-    { "src": "screenshots/retirement.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Retirement readiness" }
+    { "src": "screenshots/need.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "What do you need today?" }
   ]
 }

@@ -2,10 +2,10 @@
 
 **App name:** WorkWell 360
 **Short description (max 80 chars):**
-> Wellness. Performance. Purpose. Workplace wellbeing to a healthy retirement.
+> Wellness. Performance. Purpose. Complete workplace mental-wellness support.
 
 **Full description:**
-> WorkWell 360 is a complete workplace mental-wellness and retirement-transition companion —
+> WorkWell 360 is a complete workplace mental-wellness companion —
 > not just a counselling booking app, but a whole wellbeing ecosystem.
 >
 > Whatever you're facing today, WorkWell 360 points you to the right support:
@@ -15,17 +15,16 @@
 > 😰 Stress management — track and lighten your load
 > 🔥 Burnout prevention & recovery
 > 💼 Workplace counselling with verified professionals
-> 🔄 Retirement transition — a 12–24 month journey, not a single date
 > ❤️ Family & relationship support
 > 📊 Anonymous employer & HR wellness analytics
 >
 > FEATURES
 > • Daily check-in that recommends the right resource — no diagnosis
-> • "What do you need today?" pathways for anger, stress, burnout, grief, work, retirement & relationships
+> • "What do you need today?" pathways for anger, stress, burnout, grief, work & relationships
 > • Self-assessments for anger, stress and burnout with tailored toolkits
 > • Diaries, breathing & grounding exercises, trigger maps, boundary and self-care tools
-> • Retirement Readiness Score across six dimensions, plus a 7-stage journey
 > • Verified counsellor directory with in-app session requests
+> • Confidential anonymous workplace reporting
 > • Self-care store: journals, courses and workbooks
 > • Employer dashboard with aggregated, anonymised wellness trends
 >
@@ -36,7 +35,7 @@
 > Powered by Counsellor Priscilla Maina.
 
 **Category:** Health & Fitness
-**Tags:** mental health, wellbeing, stress, burnout, counselling, retirement
+**Tags:** mental health, wellbeing, stress, burnout, counselling, workplace
 **Contact email:** mosenduyu@gmail.com
 **Privacy policy URL:** https://YOUR_DOMAIN/privacy.html  (see privacy.html in repo root)
 

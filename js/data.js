@@ -8,7 +8,6 @@ export const PILLARS = [
   { id: 'stress',      emoji: '😰', name: 'Stress Management',    desc: 'Track & lighten the load',     route: '#/stress' },
   { id: 'burnout',     emoji: '🔥', name: 'Burnout Recovery',     desc: 'Recognise & recover',          route: '#/burnout' },
   { id: 'counselling', emoji: '💼', name: 'Workplace Counselling',desc: 'Talk to a professional',       route: '#/counselling' },
-  { id: 'retirement',  emoji: '🔄', name: 'Retirement Transition',desc: 'From employment to a good life',route: '#/retirement' },
   { id: 'family',      emoji: '👨‍👩‍👧', name: 'Family & Relationships', desc: 'Support at home',          route: '#/family' },
   { id: 'employer',    emoji: '📊', name: 'Employer & Analytics', desc: 'For HR & leaders',             route: '#/employer' },
 ];
@@ -30,7 +29,6 @@ export const NEED_PATHS = [
   { e: '🔥', label: 'I am exhausted',             route: '#/burnout',     tag: 'Burnout pathway' },
   { e: '💔', label: 'I am grieving',              route: '#/grief', tag: 'Grief pathway' },
   { e: '💼', label: 'I am struggling at work',    route: '#/counselling?cat=Workplace conflict', tag: 'Workplace pathway' },
-  { e: '🔄', label: 'I am approaching retirement',route: '#/retirement',  tag: 'Retirement pathway' },
   { e: '❤️', label: 'My relationship is struggling', route: '#/family',   tag: 'Relationship pathway' },
   { e: '🧠', label: 'I need professional help',   route: '#/counselling', tag: 'Counselling pathway' },
 ];
@@ -214,17 +212,6 @@ export const TOOLKITS = {
     { ico: '📊', title: 'Workplace stress check', desc: 'See where the pressure is', route: '#/assess/stress' },
     { ico: '🧭', title: 'Career counselling', desc: 'Talk through your path', route: '#/counselling?cat=Career counselling' },
   ],
-  retirement: [
-    { ico: '📊', title: 'Retirement Readiness Score', desc: 'Six dimensions, your priorities', route: '#/retirement/readiness' },
-    { ico: '🗺️', title: 'The 7-stage journey', desc: 'Prepare → Launch → Thrive', route: '#/retirement/journey' },
-    { ico: '🧩', title: 'The four transition pillars', desc: 'Uncertainty · Engagement · Cashflows · Relationships', route: '#/retirement/pillars' },
-    { ico: '🎯', title: 'Purpose & engagement planner', desc: 'What will fill your days', route: '#/retirement/purpose' },
-    { ico: '💰', title: 'Cashflow readiness planner', desc: 'Money for the next chapter', route: '#/retirement/cashflow' },
-    { ico: '❤️', title: 'Relationships & home guide', desc: 'Prepare the people around you', route: '#/retirement/relationships' },
-    { ico: '📓', title: 'Retirement journal', desc: 'Reflect on the transition', route: '#/journal/retire' },
-    { ico: '🎓', title: 'Preparing for Retirement', desc: 'Course · 8 lessons', route: '#/course/retire' },
-    { ico: '💬', title: 'Retirement counselling', desc: 'Talk to a specialist', route: '#/counselling?cat=Retirement counselling' },
-  ],
   family: [
     { ico: '💬', title: 'Healthy communication', desc: 'Listen, speak & repair well', route: '#/family/communication' },
     { ico: '🗣️', title: 'Say it kindly (assertive)', desc: 'Firm and respectful', route: '#/anger/assertive' },
@@ -242,49 +229,19 @@ export const TOOLKITS = {
 export const COUNSELLING_CATEGORIES = [
   'Individual counselling', 'Couples counselling', 'Family counselling', 'Grief and loss',
   'Anger management', 'Stress', 'Burnout', 'Anxiety', 'Workplace conflict', 'Career counselling',
-  'Financial stress', 'Substance-use concerns', 'Retirement counselling', 'Relationship issues',
+  'Financial stress', 'Substance-use concerns', 'Relationship issues',
   'Bereavement', 'Adjustment to major life changes',
 ];
 
 export const PROVIDER_TYPES = ['Counsellor', 'Psychologist', 'Therapist', 'Psychiatrist', 'Coach', 'EAP provider', 'Support group'];
 
 export const PROVIDERS = [
-  { id: 'p1', name: 'Priscilla Maina', type: 'Counsellor', verified: true, specialties: ['Workplace conflict', 'Stress', 'Retirement counselling'], modes: ['Video', 'In-person', 'Chat'], rate: 2000, langs: ['English', 'Kiswahili'], rating: 4.9, bio: 'Lead workplace-wellness counsellor. 12 yrs supporting employees through stress, conflict and retirement transitions.' },
+  { id: 'p1', name: 'Priscilla Maina', type: 'Counsellor', verified: true, specialties: ['Workplace conflict', 'Stress', 'Anxiety'], modes: ['Video', 'In-person', 'Chat'], rate: 2000, langs: ['English', 'Kiswahili'], rating: 4.9, bio: 'Lead workplace-wellness counsellor. 12 yrs supporting employees through stress and workplace conflict.' },
   { id: 'p2', name: 'Dr. Amina Yusuf', type: 'Psychologist', verified: true, specialties: ['Anxiety', 'Burnout', 'Adjustment to major life changes'], modes: ['Video', 'In-person'], rate: 3500, langs: ['English'], rating: 4.8, bio: 'Clinical psychologist focused on burnout recovery and anxiety.' },
   { id: 'p3', name: 'Samuel Otieno', type: 'Therapist', verified: true, specialties: ['Grief and loss', 'Bereavement', 'Family counselling'], modes: ['Video', 'Chat'], rate: 2500, langs: ['English', 'Kiswahili', 'Dholuo'], rating: 4.9, bio: 'Grief and family therapist. Gentle, faith-sensitive approach.' },
-  { id: 'p4', name: 'Grace Wambui', type: 'Coach', verified: true, specialties: ['Career counselling', 'Financial stress', 'Retirement counselling'], modes: ['Video'], rate: 1800, langs: ['English', 'Kiswahili'], rating: 4.7, bio: 'Career & financial-wellness coach. Practical planning for life changes.' },
+  { id: 'p4', name: 'Grace Wambui', type: 'Coach', verified: true, specialties: ['Career counselling', 'Financial stress', 'Adjustment to major life changes'], modes: ['Video'], rate: 1800, langs: ['English', 'Kiswahili'], rating: 4.7, bio: 'Career & financial-wellness coach. Practical planning for life changes.' },
   { id: 'p5', name: 'Peter Njoroge', type: 'Psychiatrist', verified: true, specialties: ['Anxiety', 'Substance-use concerns'], modes: ['Video', 'In-person'], rate: 5000, langs: ['English'], rating: 4.8, bio: 'Consultant psychiatrist. Medication review and complex care.' },
   { id: 'g1', name: 'Managing Stress Together', type: 'Support group', verified: true, specialties: ['Stress', 'Burnout'], modes: ['Video'], rate: 0, langs: ['English'], rating: 4.6, bio: 'Weekly peer support group facilitated by a counsellor. Free for members.' },
-];
-
-/* ---- Retirement Transition content ---- */
-export const RETIRE_PILLARS = [
-  { id: 'uncertainty', emoji: '🌫️', name: 'Uncertainty', items: ['Identity', 'Health', 'Future', 'Ageing', 'Change'] },
-  { id: 'engagement',  emoji: '🌱', name: 'Engagement',  items: ['Purpose', 'Hobbies', 'Volunteering', 'Entrepreneurship', 'Learning', 'Social connections'] },
-  { id: 'cashflows',   emoji: '💰', name: 'Cashflows',   items: ['Budgeting', 'Savings', 'Investments', 'Passive income', 'Financial independence', 'Lifestyle planning'] },
-  { id: 'relationships', emoji: '❤️', name: 'Relationships', items: ['Marriage', 'Family', 'Adult children', 'Friendships', 'Empty nest', 'Social networks'] },
-];
-
-export const RETIRE_READINESS = {
-  intro: 'Six dimensions of retirement readiness. Rate how prepared you feel (0 = not at all, 4 = fully ready).',
-  dims: [
-    { id: 'financial', label: 'Financial', emoji: '💰', q: 'I have a clear, funded plan for income after I stop working.' },
-    { id: 'emotional', label: 'Emotional', emoji: '🧠', q: 'I feel emotionally ready to let go of my work identity.' },
-    { id: 'health', label: 'Health', emoji: '💪', q: 'I am investing in my physical health for the years ahead.' },
-    { id: 'relationships', label: 'Relationships', emoji: '❤️', q: 'My close relationships are ready for this life change.' },
-    { id: 'purpose', label: 'Purpose', emoji: '🎯', q: 'I know what will give my days meaning after retirement.' },
-    { id: 'social', label: 'Social', emoji: '👥', q: 'I have social connections beyond my workplace.' },
-  ],
-};
-
-export const RETIRE_JOURNEY = [
-  { when: '24 months before', title: 'Prepare', desc: 'Assess readiness, start conversations, imagine the next chapter.', phase: 'prepare' },
-  { when: '18 months before', title: 'Plan', desc: 'Build the financial, purpose and health plans.', phase: 'plan' },
-  { when: '12 months before', title: 'Transition', desc: 'Test new routines, hobbies and social circles.', phase: 'transition' },
-  { when: '6 months before',  title: 'Adjust', desc: 'Hand over, wind down, prepare relationships at home.', phase: 'adjust' },
-  { when: 'Retirement day',   title: 'Launch', desc: 'Mark the milestone. Celebrate the contribution.', phase: 'launch' },
-  { when: '0–12 months after',title: 'Rebuild', desc: 'Establish a new rhythm, purpose and structure.', phase: 'rebuild' },
-  { when: '1–3 years after',  title: 'Thrive', desc: 'Live a full, connected, healthy retirement.', phase: 'thrive' },
 ];
 
 /* ---- Family / relationship pathways ---- */
@@ -305,7 +262,6 @@ export const PRODUCTS = [
   { id: 'j-stress', cat: 'Journals', name: 'Stress Journal', price: 700, ico: '🗒️', desc: 'Daily stress log with triggers and wins.' },
   { id: 'j-burnout', cat: 'Journals', name: 'Burnout Recovery Journal', price: 950, ico: '📕', desc: 'A 12-week recovery companion.' },
   { id: 'j-anger', cat: 'Journals', name: 'Anger Management Journal', price: 750, ico: '📙', desc: 'Track triggers, responses and progress.' },
-  { id: 'j-retire', cat: 'Journals', name: 'Retirement Transition Journal', price: 1200, ico: '📘', desc: 'Plan purpose, money and relationships.' },
   { id: 'j-grief', cat: 'Journals', name: 'Grief Journal', price: 750, ico: '🕯️', desc: 'A gentle space for loss and remembrance.' },
   // Courses
   { id: 'c-stress', cat: 'Courses', name: 'Managing Workplace Stress', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'stress' },
@@ -313,7 +269,6 @@ export const PRODUCTS = [
   { id: 'c-anger', cat: 'Courses', name: 'Managing Anger', price: 1500, ico: '🎓', desc: '6 lessons · certificate', courseId: 'anger' },
   { id: 'c-eq', cat: 'Courses', name: 'Emotional Intelligence', price: 2000, ico: '🎓', desc: '5 lessons · certificate', courseId: 'eq' },
   { id: 'c-balance', cat: 'Courses', name: 'Work–Life Balance', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'balance' },
-  { id: 'c-retire', cat: 'Courses', name: 'Preparing for Retirement', price: 3500, ico: '🎓', desc: '8 lessons · certificate', courseId: 'retire' },
   { id: 'c-finance', cat: 'Courses', name: 'Financial Wellness', price: 2500, ico: '🎓', desc: '6 lessons · certificate', courseId: 'finance' },
   { id: 'c-rel', cat: 'Courses', name: 'Healthy Relationships', price: 1800, ico: '🎓', desc: '5 lessons · certificate', courseId: 'rel' },
 ];
@@ -325,7 +280,6 @@ export const COURSES = {
   burnout: { id: 'burnout', title: 'Preventing Burnout', lessons: ['Spotting burnout early', 'The exhaustion–detachment cycle', 'Rest that actually restores', 'Redesigning your workload', 'Boundaries & saying no', 'Your recovery & return plan'] },
   eq: { id: 'eq', title: 'Emotional Intelligence', lessons: ['Self-awareness', 'Self-regulation', 'Empathy at work', 'Social skills', 'Applying EQ under pressure'] },
   balance: { id: 'balance', title: 'Work–Life Balance', lessons: ['Auditing your week', 'Priorities & values', 'Protecting off-hours', 'Digital boundaries', 'Sustaining balance'] },
-  retire: { id: 'retire', title: 'Preparing for Retirement', lessons: ['The four transition pillars', 'Your identity beyond work', 'Money & cashflow planning', 'Health for the long game', 'Purpose & engagement', 'Relationships & the empty nest', 'Building your weekly rhythm', 'The first 90 days'] },
   finance: { id: 'finance', title: 'Financial Wellness', lessons: ['Money & wellbeing', 'Budgeting basics', 'Emergency fund & debt', 'Saving & investing', 'Passive income ideas', 'Planning for independence'] },
   rel: { id: 'rel', title: 'Healthy Relationships', lessons: ['Communication foundations', 'Conflict without harm', 'Repair & reconnection', 'Boundaries in relationships', 'Growing together'] },
 };
@@ -337,7 +291,7 @@ export const PACKAGES = [
   { id: 'pro', name: 'Professional', tagline: 'Most popular', price: 'from Ksh 450 / employee / mo',
     features: ['Everything in Basic', 'Counselling sessions (EAP)', 'Stress & burnout programmes', 'Anger-management programme', 'HR analytics dashboard', 'On-site employee workshops'], badge: 'pro', popular: true },
   { id: 'enterprise', name: 'Enterprise', tagline: 'Whole-organisation', price: 'Custom contract',
-    features: ['Everything in Professional', 'Org-wide wellness assessment', 'Dedicated counsellors', 'Leadership wellness track', 'Retirement-transition programme', 'Custom training & certification', 'Quarterly org wellness reports', 'Dedicated account manager'], badge: 'new' },
+    features: ['Everything in Professional', 'Org-wide wellness assessment', 'Dedicated counsellors', 'Leadership wellness track', 'Custom training & certification', 'Quarterly org wellness reports', 'Dedicated account manager'], badge: 'new' },
 ];
 
 /* ---- Employer aggregate demo data (anonymised, never individual) ---- */
@@ -349,7 +303,6 @@ export const EMPLOYER_DEMO = {
     { id: 'burnout', label: 'Burnout', score: 46, trend: +6 },
     { id: 'anger', label: 'Anger / conflict', score: 78, trend: +1 },
     { id: 'engagement', label: 'Engagement', score: 81, trend: +2 },
-    { id: 'retirement', label: 'Retirement readiness', score: 63, trend: 0 },
   ],
   depts: [
     { name: 'Operations', burnoutRisk: 'High', note: 'Burnout risk increased this quarter' },
@@ -357,7 +310,7 @@ export const EMPLOYER_DEMO = {
     { name: 'Finance', burnoutRisk: 'Moderate', note: 'Stable; watch month-end peaks' },
     { name: 'Field Sales', burnoutRisk: 'Moderate', note: 'Engagement strong, conflict low' },
   ],
-  utilisation: { counselling: 27, workshops: 61, courses: 44, retirement: 18 },
+  utilisation: { counselling: 27, workshops: 61, courses: 44 },
 };
 
 /* ---- Counsellor portal demo ---- */
@@ -366,7 +319,7 @@ export const COUNSELLOR_DEMO = {
   today: [
     { time: '09:00', client: 'Client A', mode: 'Video', topic: 'Workplace conflict' },
     { time: '11:30', client: 'Client B', mode: 'In-person', topic: 'Stress' },
-    { time: '14:00', client: 'Client C', mode: 'Chat', topic: 'Retirement counselling' },
+    { time: '14:00', client: 'Client C', mode: 'Chat', topic: 'Anxiety' },
   ],
   stats: { activeClients: 34, sessionsThisMonth: 96, avgRating: 4.9, followUpsDue: 5 },
 };

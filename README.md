@@ -2,7 +2,7 @@
 
 **Wellness. Performance. Purpose.**
 
-A complete **workplace mental-wellness and retirement-transition ecosystem** — not just a
+A complete **workplace mental-wellness ecosystem** — not just a
 counselling-booking app. Built as an installable, offline-capable **PWA**, ready to wrap for the
 Google Play Store.
 
@@ -12,15 +12,14 @@ Powered by Counsellor Priscilla Maina.
 
 ---
 
-## The 8 pillars
+## The 7 pillars
 | | Pillar | What it does |
 |---|--------|--------------|
 | 🧠 | Mental Health | Everyday emotional wellbeing + counselling |
 | 😡 | Anger Management | Self-assessment, diary, triggers, STOP–PAUSE–REFLECT–RESPOND, assertive-communication builder |
 | 😰 | Stress Management | Stress dashboard, breathing, time/priority tool, boundaries, workload script, self-care checklist |
 | 🔥 | Burnout Recovery | Self-check, energy/sleep tracker, rest planner, recovery plan, return-to-work |
-| 💼 | Workplace Counselling | Verified provider directory (16 categories) + in-app session requests |
-| 🔄 | Retirement Transition | Readiness score (6 dimensions), 7-stage journey, 4 transition pillars |
+| 💼 | Workplace Counselling | Verified provider directory + in-app session requests + anonymous reporting |
 | 👨‍👩‍👧 | Family & Relationships | Couples, family, parenting, caregiving, grief |
 | 📊 | Employer & Analytics | Aggregated, **anonymised** HR wellness dashboard |
 

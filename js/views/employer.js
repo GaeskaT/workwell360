@@ -46,14 +46,13 @@ function employer() {
         ${scoreBar('Counselling / EAP', E.utilisation.counselling)}
         ${scoreBar('Workshops attended', E.utilisation.workshops)}
         ${scoreBar('Courses completed', E.utilisation.courses)}
-        ${scoreBar('Retirement programme', E.utilisation.retirement)}
       </div>
 
       ${sectionH('Act on the data')}
       ${rows([
         { ico: '🧑‍🏫', title: 'Book a stress / burnout workshop', desc: 'Targeted intervention for Operations', href: '#/packages' },
         { ico: '📈', title: 'Upgrade to Enterprise', desc: 'Org-wide assessment & quarterly reports', href: '#/packages' },
-        { ico: '🔄', title: 'Add retirement-transition programme', desc: 'For staff nearing retirement', href: '#/retirement' },
+        { ico: '🧠', title: 'Roll out a mental-health training', desc: 'Build wellbeing skills org-wide', href: '#/packages' },
       ])}
       <p class="muted center" style="font-size:.76rem">Demo data shown. Live dashboards populate from employees who consent to anonymous aggregation.</p>
       <div class="fab-space"></div>`,

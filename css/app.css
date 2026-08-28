@@ -205,7 +205,7 @@ input[type=range]{accent-color:var(--brand)}
 /* ---- Tabbar ---- */
 .tabbar{
   position:fixed; left:0; right:0; bottom:0; z-index:30;
-  display:grid; grid-template-columns:repeat(5,1fr);
+  display:grid; grid-template-columns:repeat(4,1fr);
   background:color-mix(in srgb, var(--surface) 92%, transparent);
   backdrop-filter:saturate(1.4) blur(12px);
   border-top:1px solid var(--line);

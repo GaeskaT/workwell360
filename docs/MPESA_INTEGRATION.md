@@ -40,11 +40,10 @@ The spec has 8 revenue streams. Each maps to a specific Daraja product:
 | 3 | Corporate workshops | **STK Push / Paybill** | One-off, larger amounts. |
 | 4 | Digital courses | **STK Push** → unlock entitlement | ⚠️ Play billing caveat — see §9. |
 | 5 | Premium membership | **Ratiba** (standing order) or monthly **STK** | True auto-recurring on M-Pesa = Ratiba. |
-| 6 | Retirement packages | **STK Push** (one-off or installments) | High value; consider installment schedule. |
-| 7 | Licensing | Invoice / bank (out of M-Pesa scope) | Large B2B; M-Pesa optional. |
-| 8 | Training & certification | **STK Push** | One-off. |
+| 6 | Licensing | Invoice / bank (out of M-Pesa scope) | Large B2B; M-Pesa optional. |
+| 7 | Training & certification | **STK Push** | One-off. |
 
-**Build order by leverage:** STK Push (collections) first — it powers streams 2,3,4,6,8. Then B2C
+**Build order by leverage:** STK Push (collections) first — it powers streams 2,3,4,7. Then B2C
 (counsellor payouts). Then Ratiba (recurring 1,5).
 
 ---

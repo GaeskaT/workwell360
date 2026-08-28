@@ -6,7 +6,7 @@ const KEY = 'ww360.v1';
 
 const DEFAULTS = () => ({
   onboarded: false,
-  profile: { name: '', org: 'Demo Organisation', role: 'employee', retireInMonths: 18 },
+  profile: { name: '', org: 'Demo Organisation', role: 'employee' },
   settings: { theme: 'system', shareAnonAggregate: true, reminders: false, apiBase: '' },
   checkins: [],        // {ts, mood, note}
   angerDiary: [],      // {ts, trigger, body, intensity, response, note}
@@ -16,7 +16,6 @@ const DEFAULTS = () => ({
   bookings: [],        // {ts, category, provider, mode, when, status}
   reports: [],         // anonymous workplace reports {ts, ref, category, area, detail, when, severity, others, status} — NO identifiers
   assessments: {},     // {assessId: {ts, score, band, answers}}
-  retirement: { scores: null, plan: [], phase: null },
   courseProgress: {},  // {courseId: {lessons:[idx], done:bool}}
   cart: [],            // productIds
   favourites: [],

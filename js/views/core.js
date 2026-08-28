@@ -16,7 +16,7 @@ function onboarding() {
         <span class="brandplate"><img class="brandlogo" src="icons/logo-full.png" alt="WorkWell 360 — Wellness. Performance. Purpose."/></span>
       </div>
       <div class="hero">
-        <p style="margin:0">A complete workplace mental-wellness and retirement-transition companion — from everyday stress to a healthy retirement.</p>
+        <p style="margin:0">A complete workplace mental-wellness companion — from everyday stress to the support you need.</p>
       </div>
       <div class="card">
         <h2>Let's set you up</h2>
@@ -28,7 +28,7 @@ function onboarding() {
             <option value="employee">Employee</option>
             <option value="hr">HR / People manager</option>
             <option value="counsellor">Counsellor / provider</option>
-            <option value="retiree">Approaching retirement</option>
+            <option value="manager">Team leader / manager</option>
           </select>
         </label>
         <div class="callout info" style="margin:10px 0">🔒 Your check-ins, journals and assessments never leave your phone. Employers only ever see anonymous, aggregated trends — never your personal entries.</div>
@@ -97,7 +97,6 @@ function dashboard() {
       ${rows([
         { ico: '🌬️', title: '90-second breathing reset', desc: 'Calm your body right now', href: '#/tool/breathe' },
         { ico: '🎯', title: 'Take a self-assessment', desc: 'Anger · Stress · Burnout', href: '#/need-today' },
-        { ico: '🔄', title: 'Retirement readiness score', desc: 'See where you stand', href: '#/retirement/readiness' },
         { ico: '📊', title: 'Employer / HR dashboard', desc: 'Anonymous wellness trends', href: '#/employer' },
       ])}
       <div class="fab-space"></div>`,
@@ -294,12 +293,11 @@ function relax() {
 
 /* ---------- Journal ---------- */
 function journal({ id }) {
-  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal', retire: 'Retirement journal' };
+  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal' };
   const prompts = {
     gratitude: 'Name one thing that went well today, and why.',
     reflection: 'What drained you today, and what restored you?',
     grief: 'However you feel today is okay. Write whatever needs to come out.',
-    retire: 'What are you looking forward to — or worried about — in this next chapter?',
   };
   const entries = store.get().journals[id] || [];
   return {
@@ -342,7 +340,7 @@ function packages() {
           <ul class="bul">${p.features.map(f => `<li>${esc(f)}</li>`).join('')}</ul>
           <a class="btn ${p.popular ? 'primary' : ''}" href="#/employer">Preview HR dashboard</a>
         </div>`).join('')}
-      <div class="card"><h3>Revenue-ready</h3><p class="muted">Corporate subscriptions, counselling commission, workshops, digital courses, premium memberships, retirement-transition packages, licensing, and training & certification.</p></div>`,
+      <div class="card"><h3>Revenue-ready</h3><p class="muted">Corporate subscriptions, counselling commission, workshops, digital courses, premium memberships, licensing, and training & certification.</p></div>`,
   };
 }
 
@@ -465,10 +463,10 @@ function about() {
     html: html`
       ${appbar('About WorkWell 360')}
       <div class="brandwrap"><span class="brandplate"><img class="brandlogo" src="icons/logo-full.png" alt="WorkWell 360 — Wellness. Performance. Purpose."/></span></div>
-      <div class="hero"><p style="margin:0">From workplace stress to workplace well-being — and from employment to a healthy retirement.</p></div>
+      <div class="hero"><p style="margin:0">From workplace stress to workplace well-being — support across the whole of working life.</p></div>
       <div class="card"><h3>One journey, fully covered</h3>
         <p class="muted">Most wellness apps stop at the working years. WorkWell 360 covers the whole arc:</p>
-        <p style="font-weight:600;font-size:.85rem">Joining work → Adjustment → Stress → Anger → Burnout → Relationships → Caregiving → Career → Pre-retirement → Retirement → Post-retirement well-being.</p>
+        <p style="font-weight:600;font-size:.85rem">Joining work → Adjustment → Stress → Anger → Burnout → Relationships → Caregiving → Career → everyday well-being.</p>
       </div>
       <div class="card"><h3>Eight connected pillars</h3>
         <div class="tag-row">${PILLARS.map(p => `<span class="chip">${p.emoji} ${esc(p.name)}</span>`).join('')}</div>

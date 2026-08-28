@@ -11,7 +11,6 @@ export const CATALOG = {
   'c-anger':   { name: 'Managing Anger',            price: 1500, ref: 'WW-C-ANG', kind: 'course', grant: 'anger' },
   'c-eq':      { name: 'Emotional Intelligence',    price: 2000, ref: 'WW-C-EQ',  kind: 'course', grant: 'eq' },
   'c-balance': { name: 'Work–Life Balance',         price: 1500, ref: 'WW-C-BAL', kind: 'course', grant: 'balance' },
-  'c-retire':  { name: 'Preparing for Retirement',  price: 3500, ref: 'WW-C-RET', kind: 'course', grant: 'retire' },
   'c-finance': { name: 'Financial Wellness',        price: 2500, ref: 'WW-C-FIN', kind: 'course', grant: 'finance' },
   'c-rel':     { name: 'Healthy Relationships',     price: 1800, ref: 'WW-C-REL', kind: 'course', grant: 'rel' },
 
@@ -21,7 +20,6 @@ export const CATALOG = {
   'j-stress':  { name: 'Stress Journal',              price: 700,  ref: 'WW-J-STR', kind: 'journal', grant: 'j-stress' },
   'j-burnout': { name: 'Burnout Recovery Journal',    price: 950,  ref: 'WW-J-BRN', kind: 'journal', grant: 'j-burnout' },
   'j-anger':   { name: 'Anger Management Journal',     price: 750,  ref: 'WW-J-ANG', kind: 'journal', grant: 'j-anger' },
-  'j-retire':  { name: 'Retirement Transition Journal',price: 1200, ref: 'WW-J-RET', kind: 'journal', grant: 'j-retire' },
   'j-grief':   { name: 'Grief Journal',               price: 750,  ref: 'WW-J-GRF', kind: 'journal', grant: 'j-grief' },
 
   // Real-world services / membership
