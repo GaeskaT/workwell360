@@ -84,7 +84,7 @@ so the reporter can follow up.
   logs don't record IPs for `/report*`, or disable them for those paths.
 - **Retention:** set `REPORT_RETENTION_DAYS` and honour local whistleblower/data-protection law.
 - **Separation of duties:** run intake on infrastructure separate from identity/HR systems; the
-  employer dashboard must only ever receive **aggregated** counts, never individual reports.
+  employer must only ever receive **aggregated** counts, never individual reports.
 - **Abuse vs. anonymity:** the rate-limiter is memory-only and IP-hashed with a rotating salt — tune
   `windowMs`/`max` to your needs without ever persisting IPs.
 - **Duty of care:** define an escalation path for "Someone is at risk" reports; the app already routes

@@ -31,7 +31,7 @@ function onboarding() {
             <option value="manager">Team leader / manager</option>
           </select>
         </label>
-        <div class="callout info" style="margin:10px 0">🔒 Your check-ins, journals and assessments never leave your phone. Employers only ever see anonymous, aggregated trends — never your personal entries.</div>
+        <div class="callout info" style="margin:10px 0">🔒 Your check-ins, journals and assessments never leave your phone — they are never shared with your employer.</div>
         <button class="btn primary" id="ob-go">Get started</button>
       </div>`,
     onMount(root) {
@@ -90,14 +90,14 @@ function dashboard() {
 
       ${sectionH('Your wellness centres')}
       <div class="grid g2">
-        ${PILLARS.filter(p=>p.id!=='employer').map(p => `<a class="tile" href="${p.route}"><span class="emoji">${p.emoji}</span><span class="t">${esc(p.name)}</span><span class="d">${esc(p.desc)}</span></a>`).join('')}
+        ${PILLARS.map(p => `<a class="tile" href="${p.route}"><span class="emoji">${p.emoji}</span><span class="t">${esc(p.name)}</span><span class="d">${esc(p.desc)}</span></a>`).join('')}
       </div>
 
       ${sectionH('Quick tools')}
       ${rows([
         { ico: '🌬️', title: '90-second breathing reset', desc: 'Calm your body right now', href: '#/tool/breathe' },
         { ico: '🎯', title: 'Take a self-assessment', desc: 'Anger · Stress · Burnout', href: '#/need-today' },
-        { ico: '📊', title: 'Employer / HR dashboard', desc: 'Anonymous wellness trends', href: '#/employer' },
+        { ico: '🕵️', title: 'Report a concern anonymously', desc: 'Confidential · no victimization', href: '#/workplace/report' },
       ])}
       <div class="fab-space"></div>`,
     onMount(root) {
@@ -338,7 +338,7 @@ function packages() {
           <div class="muted" style="font-size:.85rem;margin-bottom:6px">${esc(p.tagline)}</div>
           <div class="price" style="font-size:1.05rem;margin-bottom:10px">${esc(p.price)}</div>
           <ul class="bul">${p.features.map(f => `<li>${esc(f)}</li>`).join('')}</ul>
-          <a class="btn ${p.popular ? 'primary' : ''}" href="#/employer">Preview HR dashboard</a>
+          <a class="btn ${p.popular ? 'primary' : ''}" href="#/about">Learn more</a>
         </div>`).join('')}
       <div class="card"><h3>Revenue-ready</h3><p class="muted">Corporate subscriptions, counselling commission, workshops, digital courses, premium memberships, licensing, and training & certification.</p></div>`,
   };
@@ -374,12 +374,11 @@ function more() {
       ${appbar('More', esc(s.profile.org), false)}
       ${sectionH('For organisations')}
       ${rows([
-        { ico: '📊', title: 'Employer / HR dashboard', desc: 'Anonymous wellness analytics', href: '#/employer' },
         { ico: '👩‍💼', title: 'Counsellor portal', desc: 'Manage clients & sessions', href: '#/counsellor' },
         { ico: '🏷️', title: 'Corporate packages', desc: 'Basic · Professional · Enterprise', href: '#/packages' },
       ])}
       ${sectionH('Wellness centres')}
-      ${rows(PILLARS.filter(p=>p.id!=='employer').map(p => ({ ico: p.emoji, title: p.name, desc: p.desc, href: p.route })))}
+      ${rows(PILLARS.map(p => ({ ico: p.emoji, title: p.name, desc: p.desc, href: p.route })))}
       ${sectionH('Account')}
       ${rows([
         { ico: '⚙️', title: 'Settings & privacy', desc: 'Theme, data, reminders', href: '#/settings' },
@@ -468,11 +467,11 @@ function about() {
         <p class="muted">Most wellness apps stop at the working years. WorkWell 360 covers the whole arc:</p>
         <p style="font-weight:600;font-size:.85rem">Joining work → Adjustment → Stress → Anger → Burnout → Relationships → Caregiving → Career → everyday well-being.</p>
       </div>
-      <div class="card"><h3>Eight connected pillars</h3>
+      <div class="card"><h3>Seven connected pillars</h3>
         <div class="tag-row">${PILLARS.map(p => `<span class="chip">${p.emoji} ${esc(p.name)}</span>`).join('')}</div>
       </div>
       <div class="card"><h3>Confidential by design</h3>
-        <p class="muted">Employee confidential data is kept strictly separate from employer organisational data. Employers receive only aggregated, anonymised wellness trends — subject to consent, law and professional ethics — never private counselling conversations or individual clinical information.</p>
+        <p class="muted">Your confidential data is never shared with your employer. Check-ins, journals, assessments and counselling remain private to you — subject to law and professional ethics — never disclosed as private conversations or individual clinical information.</p>
       </div>
       <div class="card tight center"><small>Powered by Counsellor Priscilla Maina · v1.0</small></div>
       <div class="fab-space"></div>`,

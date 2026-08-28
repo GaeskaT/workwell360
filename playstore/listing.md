@@ -16,7 +16,7 @@
 > 🔥 Burnout prevention & recovery
 > 💼 Workplace counselling with verified professionals
 > ❤️ Family & relationship support
-> 📊 Anonymous employer & HR wellness analytics
+> 🕵️ Confidential anonymous workplace reporting
 >
 > FEATURES
 > • Daily check-in that recommends the right resource — no diagnosis
@@ -26,11 +26,10 @@
 > • Verified counsellor directory with in-app session requests
 > • Confidential anonymous workplace reporting
 > • Self-care store: journals, courses and workbooks
-> • Employer dashboard with aggregated, anonymised wellness trends
 >
 > PRIVACY BY DESIGN
-> Your check-ins, journals and assessments stay on your device. Employers only ever see
-> aggregated, anonymised trends — never your personal entries or counselling conversations.
+> Your check-ins, journals and assessments stay on your device — never shared with your employer,
+> and never your personal entries or counselling conversations.
 >
 > Powered by Counsellor Priscilla Maina.
 

@@ -12,7 +12,7 @@ Powered by Counsellor Priscilla Maina.
 
 ---
 
-## The 7 pillars
+## The 6 pillars
 | | Pillar | What it does |
 |---|--------|--------------|
 | 🧠 | Mental Health | Everyday emotional wellbeing + counselling |
@@ -21,15 +21,14 @@ Powered by Counsellor Priscilla Maina.
 | 🔥 | Burnout Recovery | Self-check, energy/sleep tracker, rest planner, recovery plan, return-to-work |
 | 💼 | Workplace Counselling | Verified provider directory + in-app session requests + anonymous reporting |
 | 👨‍👩‍👧 | Family & Relationships | Couples, family, parenting, caregiving, grief |
-| 📊 | Employer & Analytics | Aggregated, **anonymised** HR wellness dashboard |
 
 Plus: **"What do you need today?"** router, **Self-care store** (journals + courses), breathing &
 grounding tools, corporate packages, and a crisis-support screen.
 
 ## Privacy by design
 All personal data (check-ins, journals, assessments) lives **on-device** in `localStorage`.
-Employers see only aggregated, anonymised trends — never individual entries or counselling. Users
-can export or erase everything from Settings.
+It is never shared with your employer — no individual entries or counselling. Users can export or
+erase everything from Settings.
 
 ## Run locally
 ```bash
@@ -68,5 +67,4 @@ Vanilla JS (ES modules), no build step, no dependencies. Themable, accessible, r
 - Accounts + cloud sync (currently local-only)
 - M-Pesa / card payments for store & counselling commission — see **[docs/MPESA_INTEGRATION.md](docs/MPESA_INTEGRATION.md)**
 - Real provider onboarding & verification
-- Live employer aggregation pipeline (consent-gated)
 - Push reminders (via Capacitor wrapper)

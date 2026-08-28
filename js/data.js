@@ -9,7 +9,6 @@ export const PILLARS = [
   { id: 'burnout',     emoji: '🔥', name: 'Burnout Recovery',     desc: 'Recognise & recover',          route: '#/burnout' },
   { id: 'counselling', emoji: '💼', name: 'Workplace Counselling',desc: 'Talk to a professional',       route: '#/counselling' },
   { id: 'family',      emoji: '👨‍👩‍👧', name: 'Family & Relationships', desc: 'Support at home',          route: '#/family' },
-  { id: 'employer',    emoji: '📊', name: 'Employer & Analytics', desc: 'For HR & leaders',             route: '#/employer' },
 ];
 
 /* ---- Daily check-in moods ---- */
@@ -293,25 +292,6 @@ export const PACKAGES = [
   { id: 'enterprise', name: 'Enterprise', tagline: 'Whole-organisation', price: 'Custom contract',
     features: ['Everything in Professional', 'Org-wide wellness assessment', 'Dedicated counsellors', 'Leadership wellness track', 'Custom training & certification', 'Quarterly org wellness reports', 'Dedicated account manager'], badge: 'new' },
 ];
-
-/* ---- Employer aggregate demo data (anonymised, never individual) ---- */
-export const EMPLOYER_DEMO = {
-  org: 'Demo Organisation', employees: 420, active: 318,
-  orgScore: 74,
-  metrics: [
-    { id: 'stress', label: 'Stress', score: 58, trend: -3 },
-    { id: 'burnout', label: 'Burnout', score: 46, trend: +6 },
-    { id: 'anger', label: 'Anger / conflict', score: 78, trend: +1 },
-    { id: 'engagement', label: 'Engagement', score: 81, trend: +2 },
-  ],
-  depts: [
-    { name: 'Operations', burnoutRisk: 'High', note: 'Burnout risk increased this quarter' },
-    { name: 'Customer Care', burnoutRisk: 'Elevated', note: 'Stress trending up with call volumes' },
-    { name: 'Finance', burnoutRisk: 'Moderate', note: 'Stable; watch month-end peaks' },
-    { name: 'Field Sales', burnoutRisk: 'Moderate', note: 'Engagement strong, conflict low' },
-  ],
-  utilisation: { counselling: 27, workshops: 61, courses: 44 },
-};
 
 /* ---- Counsellor portal demo ---- */
 export const COUNSELLOR_DEMO = {

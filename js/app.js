@@ -11,13 +11,13 @@ import { burnoutRoutes } from './views/burnout.js';
 import { counsellingRoutes } from './views/counselling.js';
 import { familyRoutes } from './views/family.js';
 import { storeRoutes } from './views/store.js';
-import { employerRoutes } from './views/employer.js';
+import { counsellorRoutes } from './views/counsellor.js';
 import { centreRoutes } from './views/centres.js';
 
 const ROUTES = {
   ...coreRoutes, ...angerRoutes, ...stressRoutes, ...burnoutRoutes,
   ...counsellingRoutes, ...familyRoutes,
-  ...storeRoutes, ...employerRoutes, ...centreRoutes,
+  ...storeRoutes, ...counsellorRoutes, ...centreRoutes,
 };
 
 /* map a route base to a bottom-tab id for active styling */
@@ -25,7 +25,7 @@ function tabFor(path) {
   if (path.startsWith('/need-today')) return 'need-today';
   if (path.startsWith('/store')) return 'store';
   if (['/dashboard', '/', ''].includes(path)) return 'dashboard';
-  if (['/more', '/crisis', '/settings', '/about', '/packages', '/employer', '/counsellor'].some(p => path.startsWith(p))) return 'more';
+  if (['/more', '/crisis', '/settings', '/about', '/packages', '/counsellor'].some(p => path.startsWith(p))) return 'more';
   return '';
 }
 

@@ -1,12 +1,12 @@
 /* WorkWell 360 — service worker (offline-first app shell) */
-const CACHE = 'ww360-v15';
+const CACHE = 'ww360-v16';
 const ASSETS = [
   './', './index.html', './css/app.css', './manifest.webmanifest',
   './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './icons/logo-full.png',
   './js/app.js', './js/store.js', './js/ui.js', './js/data.js', './js/pay.js', './js/report.js',
   './js/views/core.js', './js/views/anger.js', './js/views/stress.js',
   './js/views/burnout.js', './js/views/counselling.js',
-  './js/views/family.js', './js/views/store.js', './js/views/employer.js', './js/views/centres.js',
+  './js/views/family.js', './js/views/store.js', './js/views/counsellor.js', './js/views/centres.js',
 ];
 
 self.addEventListener('install', (e) => {
