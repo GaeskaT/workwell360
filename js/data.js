@@ -1,14 +1,19 @@
 /* ===========================================================
-   data.js — content for the 8-pillar ecosystem
+   data.js — content for the 11-pillar ecosystem
    =========================================================== */
 
 export const PILLARS = [
-  { id: 'mental',      emoji: '🧠', name: 'Mental Health',        desc: 'Everyday emotional wellbeing', route: '#/mental' },
-  { id: 'anger',       emoji: '😡', name: 'Anger Management',     desc: 'Pause, reflect, respond',      route: '#/anger' },
-  { id: 'stress',      emoji: '😰', name: 'Stress Management',    desc: 'Track & lighten the load',     route: '#/stress' },
-  { id: 'burnout',     emoji: '🔥', name: 'Burnout Recovery',     desc: 'Recognise & recover',          route: '#/burnout' },
-  { id: 'counselling', emoji: '💼', name: 'Workplace Counselling',desc: 'Talk to a professional',       route: '#/counselling' },
-  { id: 'family',      emoji: '👨‍👩‍👧', name: 'Family & Relationships', desc: 'Support at home',          route: '#/family' },
+  { id: 'mental',    emoji: '🧠', name: 'Mental Health',        desc: 'Everyday emotional wellbeing', route: '#/mental' },
+  { id: 'stress',    emoji: '😰', name: 'Stress Management',    desc: 'Track & lighten the load',     route: '#/stress' },
+  { id: 'burnout',   emoji: '🔥', name: 'Burnout Recovery',     desc: 'Recognise & recover',          route: '#/burnout' },
+  { id: 'anger',     emoji: '😡', name: 'Anger Management',     desc: 'Pause, reflect, respond',      route: '#/anger' },
+  { id: 'conflict',  emoji: '🤝', name: 'Conflict Resolution',  desc: 'Sort it out, don\'t carry it', route: '#/conflict' },
+  { id: 'counselling', emoji: '💼', name: 'Workplace Counselling', desc: 'Talk to a professional',    route: '#/counselling' },
+  { id: 'family',    emoji: '👨‍👩‍👧', name: 'Family & Relationships', desc: 'Support at home',          route: '#/family' },
+  { id: 'marriage',  emoji: '💍', name: 'Marriage & Partnership', desc: 'Protect the home front',     route: '#/marriage' },
+  { id: 'substance', emoji: '🌿', name: 'Substance Use & Recovery', desc: 'One day at a time',        route: '#/substance' },
+  { id: 'chronic',   emoji: '🩺', name: 'Chronic Illness',      desc: 'Living well with a long-term condition', route: '#/chronic' },
+  { id: 'grief',     emoji: '🕊️', name: 'Loss & Grief',         desc: 'Support through bereavement',  route: '#/grief' },
 ];
 
 /* ---- Daily check-in moods ---- */
@@ -26,7 +31,11 @@ export const NEED_PATHS = [
   { e: '😡', label: 'I am angry',                 route: '#/anger',       tag: 'Anger pathway' },
   { e: '😰', label: 'I am stressed',              route: '#/stress',      tag: 'Stress pathway' },
   { e: '🔥', label: 'I am exhausted',             route: '#/burnout',     tag: 'Burnout pathway' },
-  { e: '💔', label: 'I am grieving',              route: '#/grief', tag: 'Grief pathway' },
+  { e: '🕊️', label: 'I am grieving',              route: '#/grief', tag: 'Grief pathway' },
+  { e: '🤝', label: 'I am caught in a conflict',  route: '#/conflict',    tag: 'Conflict pathway' },
+  { e: '🌿', label: 'I am struggling with substances', route: '#/substance', tag: 'Recovery pathway' },
+  { e: '💍', label: 'My marriage is under strain', route: '#/marriage',   tag: 'Marriage pathway' },
+  { e: '🩺', label: 'I live with a chronic illness', route: '#/chronic',  tag: 'Chronic illness pathway' },
   { e: '💼', label: 'I am struggling at work',    route: '#/counselling?cat=Workplace conflict', tag: 'Workplace pathway' },
   { e: '❤️', label: 'My relationship is struggling', route: '#/family',   tag: 'Relationship pathway' },
   { e: '🧠', label: 'I need professional help',   route: '#/counselling', tag: 'Counselling pathway' },
@@ -153,6 +162,74 @@ export const ASSESSMENTS = {
       { max: 100, band: 'Struggling — reach out', note: 'Home has felt hard. Couples or family counselling could help you reconnect.' },
     ],
   },
+  substance: {
+    id: 'substance', title: 'Substance-use check', pillar: 'substance',
+    intro: 'Be honest — nobody else sees this. It is a reflection tool, not a diagnosis.',
+    questions: [
+      'I use alcohol or other substances to calm my nerves or switch off.',
+      'I have broken a promise to myself or my family about how much I use.',
+      'Thinking about the next drink or dose shapes my day.',
+      'I have used alone, or hidden how much I use.',
+      'Work, money or relationships have suffered because of my use.',
+      'When I stop, I feel irritable, restless or unwell.',
+    ],
+    bands: [
+      { max: 30, band: 'In control', note: 'Your use does not seem to be running your life. Keep watching the patterns that creep up.' },
+      { max: 60, band: 'Warning signs', note: 'Use is starting to cost you something. The craving tools and a check-in with a counsellor will help.' },
+      { max: 100, band: 'Time to reach out', note: 'This looks like dependence. Please talk to a professional — and do not stop alcohol or sedatives abruptly without medical advice.' },
+    ],
+  },
+  conflict: {
+    id: 'conflict', title: 'Conflict style & load check', pillar: 'conflict',
+    intro: 'Think of a specific ongoing disagreement at work or at home. A reflection tool, not a diagnosis.',
+    questions: [
+      'I avoid difficult conversations until they blow up.',
+      'The same disagreement keeps coming back unresolved.',
+      'I react sharply when I feel criticised or undermined.',
+      'Conflict follows me home and into my sleep.',
+      'I struggle to say what I actually need.',
+      'I do not feel safe raising the issue directly.',
+    ],
+    bands: [
+      { max: 30, band: 'Handling it well', note: 'You deal with friction early and directly. Keep the same skills for the harder conversations ahead.' },
+      { max: 60, band: 'Carrying unresolved tension', note: 'Avoidance or heat is costing you. The prep tool below will get a hard conversation started safely.' },
+      { max: 100, band: 'Conflict is wearing you down', note: 'This is beyond small talk. Use the escalation ladder, and consider a counsellor or HR/mediation.' },
+    ],
+  },
+  marriage: {
+    id: 'marriage', title: 'Marriage & partnership check', pillar: 'marriage',
+    intro: 'About your relationship over the last few weeks. A reflection tool, not a diagnosis.',
+    questions: [
+      'We repeat the same argument without resolution.',
+      'I feel emotionally distant from my partner.',
+      'Money is a source of tension between us.',
+      'One of us carries most of the home and parenting load.',
+      'We rarely make time for each other in a normal week.',
+      'I feel criticised or dismissed at home.',
+    ],
+    bands: [
+      { max: 30, band: 'Steady', note: 'Your partnership looks solid. Keep the small habits that protect it — they are what hold.' },
+      { max: 60, band: 'Strained', note: 'Distance is building. The weekly check-in and repair scripts below are made for exactly this point.' },
+      { max: 100, band: 'Reach out — together', note: 'This is heavy to carry alone. Couples counselling works best before resentment sets. If you are ever unsafe at home, please use Get urgent help.' },
+    ],
+  },
+  chronic: {
+    id: 'chronic', title: 'Living with a chronic condition', pillar: 'chronic',
+    intro: 'How the condition — and the practical weight of it — has been lately. Not a diagnosis.',
+    questions: [
+      'Managing my health takes most of my energy.',
+      'I worry about how work will treat my condition.',
+      'Symptoms or treatment side-effects disturb my sleep and focus.',
+      'I have given up things I value because of my health.',
+      'I feel isolated or misunderstood about my illness.',
+      'Clinic visits, medicine and transport costs weigh on me.',
+    ],
+    bands: [
+      { max: 30, band: 'Coping well', note: 'You are managing the condition without it managing you. Keep pacing yourself and protecting rest.' },
+      { max: 60, band: 'Carrying a heavy load', note: 'Illness stress is real stress. Try the pacing and appointment tools, and let someone in.' },
+      { max: 100, band: 'Overwhelmed — reach out', note: 'Living with a long-term condition is a common route into anxiety and depression. Talking to a counsellor alongside your clinic care helps.' },
+    ],
+  },
 };
 
 /* ---- Toolkits per pillar ---- */
@@ -213,6 +290,7 @@ export const TOOLKITS = {
   ],
   family: [
     { ico: '💬', title: 'Healthy communication', desc: 'Listen, speak & repair well', route: '#/family/communication' },
+    { ico: '💍', title: 'Marriage & partnership', desc: 'Check-ins, repair scripts & money talks', route: '#/marriage' },
     { ico: '🗣️', title: 'Say it kindly (assertive)', desc: 'Firm and respectful', route: '#/anger/assertive' },
     { ico: '🚧', title: 'Work–life boundaries', desc: 'Keep work from spilling home', route: '#/stress/boundaries' },
     { ico: '🧒', title: 'Parenting & work', desc: 'Balancing both', route: '#/family/parenting' },
@@ -222,6 +300,49 @@ export const TOOLKITS = {
     { ico: '🎓', title: 'Healthy Relationships', desc: 'Course · 5 lessons', route: '#/course/rel' },
     { ico: '💞', title: 'Talk to a counsellor', desc: 'Couples & family counselling', route: '#/counselling?cat=Couples counselling' },
   ],
+  substance: [
+    { ico: '📓', title: 'Craving log', desc: 'Catch the urge, record what you did instead', route: '#/substance/cravings' },
+    { ico: '🌱', title: 'Recovery day counter', desc: 'Milestones & your next target', route: '#/substance/counter' },
+    { ico: '🧨', title: 'Trigger map', desc: 'People, places, feelings & money days', route: '#/substance/triggers' },
+    { ico: '🆘', title: 'My urge plan', desc: 'What I do in the next 20 minutes', route: '#/substance/plan' },
+    { ico: '🌬️', title: 'Breathe through a craving', desc: '90-second guided reset', route: '#/tool/breathe?ctx=substance' },
+    { ico: '📝', title: 'Recovery journal', desc: 'Private, on your device', route: '#/journal/recovery' },
+    { ico: '🎓', title: 'Overcoming substance use', desc: 'Course · 6 lessons', route: '#/course/substance' },
+    { ico: '💬', title: 'Talk to a specialist', desc: 'Confidential addiction support', route: '#/counselling?cat=Substance-use concerns' },
+  ],
+  conflict: [
+    { ico: '🧭', title: 'Find your conflict style', desc: 'How you react under pressure', route: '#/conflict/style' },
+    { ico: '📋', title: 'Prepare the hard conversation', desc: 'Build a script that lands', route: '#/conflict/prepare' },
+    { ico: '🕵️', title: 'De-escalation at work', desc: 'Stay professional when it heats up', route: '#/workplace/conflict' },
+    { ico: '🗣️', title: 'Assertive communication', desc: 'Say it firmly, not fiercely', route: '#/anger/assertive' },
+    { ico: '📓', title: 'Conflict log', desc: 'Track what happened & the outcome', route: '#/conflict/log' },
+    { ico: '🪜', title: 'Escalation ladder', desc: 'When to go to your manager or HR', route: '#/conflict/escalate' },
+    { ico: '🕵️', title: 'Report anonymously', desc: 'If it is bullying or harassment', route: '#/workplace/report' },
+    { ico: '🎓', title: 'Conflict resolution at work', desc: 'Course · 5 lessons', route: '#/course/conflict' },
+    { ico: '💬', title: 'Talk it through', desc: 'Mediation with a counsellor', route: '#/counselling?cat=Workplace conflict' },
+  ],
+  marriage: [
+    { ico: '📅', title: 'Weekly check-in', desc: 'Five numbers that show where you are', route: '#/marriage/checkin' },
+    { ico: '🩹', title: 'Repair script', desc: 'How to come back after a fight', route: '#/marriage/repair' },
+    { ico: '💬', title: 'Healthy communication', desc: 'Listen, speak & repair well', route: '#/family/communication' },
+    { ico: '💰', title: 'The money conversation', desc: 'Talk finances without a row', route: '#/marriage/money' },
+    { ico: '💞', title: 'Connection habits', desc: 'Small things that keep you close', route: '#/marriage/rituals' },
+    { ico: '🧾', title: 'Before we marry', desc: 'The 14 conversations to have first', route: '#/marriage/premarital' },
+    { ico: '📝', title: 'Partnership journal', desc: 'Private to your device', route: '#/journal/marriage' },
+    { ico: '🎓', title: 'Marriage & partnership', desc: 'Course · 5 lessons', route: '#/course/marriage' },
+    { ico: '💬', title: 'Couples counselling', desc: 'Get support early', route: '#/counselling?cat=Couples counselling' },
+  ],
+  chronic: [
+    { ico: '📓', title: 'Symptom & flare log', desc: 'Daily record to spot patterns', route: '#/chronic/symptoms' },
+    { ico: '💊', title: 'Medication tracker', desc: 'What you take, and today\'s doses', route: '#/chronic/meds' },
+    { ico: '🔋', title: 'Energy pacing', desc: 'Plan the day around your energy', route: '#/chronic/pacing' },
+    { ico: '🩺', title: 'Appointment prep', desc: 'Questions to take to clinic', route: '#/chronic/appointment' },
+    { ico: '🗣️', title: 'Explaining it at work', desc: 'Script for your manager', route: '#/chronic/disclose' },
+    { ico: '🌬️', title: 'Breathing for pain & flare-ups', desc: 'Steady your body', route: '#/tool/breathe?ctx=chronic' },
+    { ico: '📝', title: 'Living with it journal', desc: 'Private to your device', route: '#/journal/chronic' },
+    { ico: '🎓', title: 'Living well with chronic illness', desc: 'Course · 5 lessons', route: '#/course/chronic' },
+    { ico: '💬', title: 'Talk to a counsellor', desc: 'Adjustment & grief support', route: '#/counselling?cat=Adjustment to major life changes' },
+  ],
 };
 
 /* ---- Counselling categories & demo providers ---- */
@@ -229,27 +350,31 @@ export const COUNSELLING_CATEGORIES = [
   'Individual counselling', 'Couples counselling', 'Family counselling', 'Grief and loss',
   'Anger management', 'Stress', 'Burnout', 'Anxiety', 'Workplace conflict', 'Career counselling',
   'Financial stress', 'Substance-use concerns', 'Relationship issues',
-  'Bereavement', 'Adjustment to major life changes',
+  'Bereavement', 'Adjustment to major life changes', 'Chronic illness & disability',
 ];
 
 export const PROVIDER_TYPES = ['Counsellor', 'Psychologist', 'Therapist', 'Psychiatrist', 'Coach', 'EAP provider', 'Support group'];
 
 export const PROVIDERS = [
   { id: 'p1', name: 'Priscilla Maina', type: 'Counsellor', verified: true, specialties: ['Workplace conflict', 'Stress', 'Anxiety'], modes: ['Video', 'In-person', 'Chat'], rate: 2000, langs: ['English', 'Kiswahili'], rating: 4.9, bio: 'Lead workplace-wellness counsellor. 12 yrs supporting employees through stress and workplace conflict.' },
-  { id: 'p2', name: 'Dr. Amina Yusuf', type: 'Psychologist', verified: true, specialties: ['Anxiety', 'Burnout', 'Adjustment to major life changes'], modes: ['Video', 'In-person'], rate: 3500, langs: ['English'], rating: 4.8, bio: 'Clinical psychologist focused on burnout recovery and anxiety.' },
+  { id: 'p2', name: 'Dr. Amina Yusuf', type: 'Psychologist', verified: true, specialties: ['Anxiety', 'Burnout', 'Adjustment to major life changes', 'Chronic illness & disability'], modes: ['Video', 'In-person'], rate: 3500, langs: ['English'], rating: 4.8, bio: 'Clinical psychologist focused on burnout recovery, anxiety and living with long-term health conditions.' },
   { id: 'p3', name: 'Samuel Otieno', type: 'Therapist', verified: true, specialties: ['Grief and loss', 'Bereavement', 'Family counselling'], modes: ['Video', 'Chat'], rate: 2500, langs: ['English', 'Kiswahili', 'Dholuo'], rating: 4.9, bio: 'Grief and family therapist. Gentle, faith-sensitive approach.' },
   { id: 'p4', name: 'Grace Wambui', type: 'Coach', verified: true, specialties: ['Career counselling', 'Financial stress', 'Adjustment to major life changes'], modes: ['Video'], rate: 1800, langs: ['English', 'Kiswahili'], rating: 4.7, bio: 'Career & financial-wellness coach. Practical planning for life changes.' },
   { id: 'p5', name: 'Peter Njoroge', type: 'Psychiatrist', verified: true, specialties: ['Anxiety', 'Substance-use concerns'], modes: ['Video', 'In-person'], rate: 5000, langs: ['English'], rating: 4.8, bio: 'Consultant psychiatrist. Medication review and complex care.' },
   { id: 'g1', name: 'Managing Stress Together', type: 'Support group', verified: true, specialties: ['Stress', 'Burnout'], modes: ['Video'], rate: 0, langs: ['English'], rating: 4.6, bio: 'Weekly peer support group facilitated by a counsellor. Free for members.' },
+  { id: 'p6', name: 'Esther Wanjiru', type: 'Counsellor', verified: true, specialties: ['Substance-use concerns', 'Chronic illness & disability', 'Grief and loss'], modes: ['Video', 'In-person', 'Chat'], rate: 2200, langs: ['English', 'Kiswahili'], rating: 4.8, bio: 'Addiction and health-adjustment counsellor. Practical, non-judgemental, family-inclusive.' },
 ];
 
 /* ---- Family / relationship pathways ---- */
 export const FAMILY_TOPICS = [
-  { ico: '💞', title: 'Couples & marriage', desc: 'Communication, conflict, reconnection', route: '#/counselling?cat=Couples counselling' },
+  { ico: '💍', title: 'Marriage & partnership', desc: 'Check-ins, repair scripts, money talks', route: '#/marriage' },
+  { ico: '💞', title: 'Couples counselling', desc: 'Get support before resentment sets', route: '#/counselling?cat=Couples counselling' },
   { ico: '👪', title: 'Family counselling', desc: 'Whole-family support', route: '#/counselling?cat=Family counselling' },
   { ico: '🧒', title: 'Parenting & children', desc: 'Balancing work and home', route: '#/family/parenting' },
   { ico: '🕊️', title: 'Grief & bereavement', desc: 'Loss support for you and family', route: '#/grief' },
   { ico: '🧓', title: 'Caregiving & ageing parents', desc: 'Support the sandwich generation', route: '#/family/caregiving' },
+  { ico: '🩺', title: 'Chronic illness at home', desc: 'Caring & living with a long-term condition', route: '#/chronic' },
+  { ico: '🌿', title: 'Substance use in the family', desc: 'Support for you and them', route: '#/substance' },
   { ico: '⚖️', title: 'Work–life balance', desc: 'Protect home from work spillover', route: '#/stress/boundaries' },
 ];
 
@@ -262,6 +387,9 @@ export const PRODUCTS = [
   { id: 'j-burnout', cat: 'Journals', name: 'Burnout Recovery Journal', price: 950, ico: '📕', desc: 'A 12-week recovery companion.' },
   { id: 'j-anger', cat: 'Journals', name: 'Anger Management Journal', price: 750, ico: '📙', desc: 'Track triggers, responses and progress.' },
   { id: 'j-grief', cat: 'Journals', name: 'Grief Journal', price: 750, ico: '🕯️', desc: 'A gentle space for loss and remembrance.' },
+  { id: 'j-recovery', cat: 'Journals', name: 'Recovery Journal', price: 850, ico: '🌿', desc: 'Day-by-day craving, win and setback log.' },
+  { id: 'j-marriage', cat: 'Journals', name: 'Marriage & Partnership Journal', price: 850, ico: '💍', desc: 'Weekly check-ins, appreciations and requests.' },
+  { id: 'j-chronic', cat: 'Journals', name: 'Chronic Illness Companion', price: 900, ico: '🩺', desc: 'Symptoms, energy and clinic questions in one place.' },
   // Courses
   { id: 'c-stress', cat: 'Courses', name: 'Managing Workplace Stress', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'stress' },
   { id: 'c-burnout', cat: 'Courses', name: 'Preventing Burnout', price: 1800, ico: '🎓', desc: '6 lessons · certificate', courseId: 'burnout' },
@@ -270,6 +398,10 @@ export const PRODUCTS = [
   { id: 'c-balance', cat: 'Courses', name: 'Work–Life Balance', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'balance' },
   { id: 'c-finance', cat: 'Courses', name: 'Financial Wellness', price: 2500, ico: '🎓', desc: '6 lessons · certificate', courseId: 'finance' },
   { id: 'c-rel', cat: 'Courses', name: 'Healthy Relationships', price: 1800, ico: '🎓', desc: '5 lessons · certificate', courseId: 'rel' },
+  { id: 'c-conflict', cat: 'Courses', name: 'Conflict Resolution at Work', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'conflict' },
+  { id: 'c-substance', cat: 'Courses', name: 'Overcoming Substance Use', price: 2000, ico: '🎓', desc: '6 lessons · certificate', courseId: 'substance' },
+  { id: 'c-marriage', cat: 'Courses', name: 'Marriage & Partnership', price: 1800, ico: '🎓', desc: '5 lessons · certificate', courseId: 'marriage' },
+  { id: 'c-chronic', cat: 'Courses', name: 'Living Well with Chronic Illness', price: 1500, ico: '🎓', desc: '5 lessons · certificate', courseId: 'chronic' },
 ];
 
 /* ---- Courses (lesson outlines) ---- */
@@ -281,6 +413,10 @@ export const COURSES = {
   balance: { id: 'balance', title: 'Work–Life Balance', lessons: ['Auditing your week', 'Priorities & values', 'Protecting off-hours', 'Digital boundaries', 'Sustaining balance'] },
   finance: { id: 'finance', title: 'Financial Wellness', lessons: ['Money & wellbeing', 'Budgeting basics', 'Emergency fund & debt', 'Saving & investing', 'Passive income ideas', 'Planning for independence'] },
   rel: { id: 'rel', title: 'Healthy Relationships', lessons: ['Communication foundations', 'Conflict without harm', 'Repair & reconnection', 'Boundaries in relationships', 'Growing together'] },
+  conflict: { id: 'conflict', title: 'Conflict Resolution at Work', lessons: ['Why conflict is information', 'Your default style under pressure', 'De-escalation & the facts/feelings split', 'Negotiating a shared outcome', 'When to escalate — HR, mediation, or leave'] },
+  substance: { id: 'substance', title: 'Overcoming Substance Use', lessons: ['What use is doing for you', 'Mapping triggers & rituals', 'Urge surfing & the 20-minute rule', 'Changing the environment', 'Setbacks, shame & relapse planning', 'Rebuilding: sleep, money, relationships'] },
+  marriage: { id: 'marriage', title: 'Marriage & Partnership', lessons: ['The four things that erode connection', 'Repair attempts & turning toward', 'Money, load & expectations', 'Intimacy after resentment', 'Rituals that keep you a team'] },
+  chronic: { id: 'chronic', title: 'Living Well with Chronic Illness', lessons: ['Grieving the healthy self', 'Pacing & energy budgeting', 'Advocating in the clinic', 'Talking to your employer', 'Protecting mood & identity'] },
 };
 
 /* ---- Corporate packages ---- */
@@ -288,9 +424,9 @@ export const PACKAGES = [
   { id: 'basic', name: 'Basic', tagline: 'Wellbeing foundations', price: 'from Ksh 150 / employee / mo',
     features: ['Employee self-care tools', 'Mental-health education library', 'Monthly wellbeing webinars', 'Basic wellness dashboard'], badge: 'free' },
   { id: 'pro', name: 'Professional', tagline: 'Most popular', price: 'from Ksh 450 / employee / mo',
-    features: ['Everything in Basic', 'Counselling sessions (EAP)', 'Stress & burnout programmes', 'Anger-management programme', 'HR analytics dashboard', 'On-site employee workshops'], badge: 'pro', popular: true },
+    features: ['Everything in Basic', 'Counselling sessions (EAP)', 'Stress & burnout programmes', 'Anger-management programme', 'Conflict-resolution workshops', 'Substance-use & recovery support', 'Grief & bereavement counselling', 'HR analytics dashboard', 'On-site employee workshops'], badge: 'pro', popular: true },
   { id: 'enterprise', name: 'Enterprise', tagline: 'Whole-organisation', price: 'Custom contract',
-    features: ['Everything in Professional', 'Org-wide wellness assessment', 'Dedicated counsellors', 'Leadership wellness track', 'Custom training & certification', 'Quarterly org wellness reports', 'Dedicated account manager'], badge: 'new' },
+    features: ['Everything in Professional', 'Chronic-illness & caregiver support track', 'Marriage & family programme', 'Org-wide wellness assessment', 'Dedicated counsellors', 'Leadership wellness track', 'Custom training & certification', 'Quarterly org wellness reports', 'Dedicated account manager'], badge: 'new' },
 ];
 
 /* ---- Counsellor portal demo ---- */
@@ -307,6 +443,7 @@ export const COUNSELLOR_DEMO = {
 /* ---- Crisis / emergency resources (Kenya-first, generic fallback) ---- */
 export const CRISIS = [
   { name: 'Kenya Red Cross — free counselling', number: '1199', note: 'Toll-free psychosocial support' },
+  { name: 'NACADA — substance-use helpline', number: '1192', note: 'Toll-free counselling & rehab referrals, 24 hrs' },
   { name: 'Befrienders Kenya', number: '+254 722 178 177', note: 'Emotional support & suicide prevention' },
   { name: 'Emergency services', number: '999 / 112', note: 'Immediate danger to life' },
   { name: 'Your workplace EAP', number: 'See HR / benefits', note: 'Confidential employee assistance' },

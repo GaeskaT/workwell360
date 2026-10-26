@@ -12,23 +12,30 @@ Powered by Counsellor Priscilla Maina.
 
 ---
 
-## The 6 pillars
+## The 11 pillars
 | | Pillar | What it does |
 |---|--------|--------------|
 | 🧠 | Mental Health | Everyday emotional wellbeing + counselling |
-| 😡 | Anger Management | Self-assessment, diary, triggers, STOP–PAUSE–REFLECT–RESPOND, assertive-communication builder |
 | 😰 | Stress Management | Stress dashboard, breathing, time/priority tool, boundaries, workload script, self-care checklist |
 | 🔥 | Burnout Recovery | Self-check, energy/sleep tracker, rest planner, recovery plan, return-to-work |
+| 😡 | Anger Management | Self-assessment, diary, triggers, STOP–PAUSE–REFLECT–RESPOND, assertive-communication builder |
+| 🤝 | Conflict Resolution | Style self-map, hard-conversation script builder, incident log, de-escalation, escalation ladder |
 | 💼 | Workplace Counselling | Verified provider directory + in-app session requests + anonymous reporting |
-| 👨‍👩‍👧 | Family & Relationships | Couples, family, parenting, caregiving, grief |
+| 👨‍👩‍👧 | Family & Relationships | Parenting, caregiving, work–life spillover, family pathways |
+| 💍 | Marriage & Partnership | Weekly six-area check-in with trend, repair script, connection habits, money talk, pre-marital checklist |
+| 🌿 | Substance Use & Recovery | Honest use check, craving log, day counter & milestones, trigger map, personal urge plan, Kenyan helplines |
+| 🩺 | Chronic Illness | Load check, symptom/flare log, medication tracker, energy pacing, appointment prep, work-disclosure script |
+| 🕊️ | Loss & Grief | Support check, understanding grief, remembrance exercise, grief journal, bereavement counselling |
 
-Plus: **"What do you need today?"** router, **Self-care store** (journals + courses), breathing &
+Plus: **"What do you need today?"** router (11 pathways), **Self-care store** (journals + courses), breathing &
 grounding tools, corporate packages, and a crisis-support screen.
 
 ## Privacy by design
-All personal data (check-ins, journals, assessments) lives **on-device** in `localStorage`.
+All personal data — check-ins, journals, assessments, craving logs, conflict entries, couple
+check-ins and symptom/medication logs — lives **on-device** in `localStorage`.
 It is never shared with your employer — no individual entries or counselling. Users can export or
-erase everything from Settings.
+erase everything from Settings. The substance-use, marriage and chronic-illness centres are
+self-help tools, not clinical care, and each one carries a route to urgent support.
 
 ## Run locally
 ```bash

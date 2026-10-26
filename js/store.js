@@ -12,6 +12,11 @@ const DEFAULTS = () => ({
   angerDiary: [],      // {ts, trigger, body, intensity, response, note}
   stressDiary: [],     // {ts, domains:[], level, note}
   energy: [],          // {ts, energy, sleep, workload}
+  cravings: [],        // {ts, sub, strength, trigger, did, coped, note}
+  conflictLog: [],     // {ts, with, issue, approach, outcome, note} — role, not name
+  coupleCheckins: [],  // {ts, connection, repair, intimacy, money, load, time, thanks, ask}
+  symptoms: [],        // {ts, severity, energy, sleep, flares:[], meds, note}
+  meds: [],            // {id, name, dose, freq} + toolkit.medsTaken by date
   journals: {},        // {journalId: [{ts, prompt, text}]}
   bookings: [],        // {ts, category, provider, mode, when, status}
   reports: [],         // anonymous workplace reports {ts, ref, category, area, detail, when, severity, others, status} — NO identifiers

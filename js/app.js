@@ -10,14 +10,19 @@ import { stressRoutes } from './views/stress.js';
 import { burnoutRoutes } from './views/burnout.js';
 import { counsellingRoutes } from './views/counselling.js';
 import { familyRoutes } from './views/family.js';
+import { substanceRoutes } from './views/substance.js';
+import { conflictRoutes } from './views/conflict.js';
+import { marriageRoutes } from './views/marriage.js';
+import { chronicRoutes } from './views/chronic.js';
 import { storeRoutes } from './views/store.js';
 import { counsellorRoutes } from './views/counsellor.js';
 import { centreRoutes } from './views/centres.js';
 
 const ROUTES = {
   ...coreRoutes, ...angerRoutes, ...stressRoutes, ...burnoutRoutes,
-  ...counsellingRoutes, ...familyRoutes,
-  ...storeRoutes, ...counsellorRoutes, ...centreRoutes,
+  ...counsellingRoutes, ...familyRoutes, ...centreRoutes,
+  ...substanceRoutes, ...conflictRoutes, ...marriageRoutes, ...chronicRoutes,
+  ...storeRoutes, ...counsellorRoutes,
 };
 
 /* map a route base to a bottom-tab id for active styling */

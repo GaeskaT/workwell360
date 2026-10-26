@@ -12,16 +12,21 @@
 >
 > 🧠 Mental health & everyday wellbeing
 > 😡 Anger management — pause, reflect, respond
+> 🤝 Conflict resolution — conversation scripts, incident log, escalation ladder
 > 😰 Stress management — track and lighten your load
 > 🔥 Burnout prevention & recovery
 > 💼 Workplace counselling with verified professionals
 > ❤️ Family & relationship support
+> 💍 Marriage & partnership — weekly check-ins and repair scripts
+> 🌿 Substance use & recovery — craving log, day counter, personal urge plan
+> 🩺 Living with chronic illness — symptom, medication and energy tools
+> 🕊️ Grief & loss — understanding grief, remembrance, bereavement support
 > 🕵️ Confidential anonymous workplace reporting
 >
 > FEATURES
 > • Daily check-in that recommends the right resource — no diagnosis
-> • "What do you need today?" pathways for anger, stress, burnout, grief, work & relationships
-> • Self-assessments for anger, stress and burnout with tailored toolkits
+> • "What do you need today?" pathways for anger, stress, burnout, grief, conflict, substance use, marriage, chronic illness, work & relationships
+> • Self-assessments across 11 areas with tailored toolkits
 > • Diaries, breathing & grounding exercises, trigger maps, boundary and self-care tools
 > • Verified counsellor directory with in-app session requests
 > • Confidential anonymous workplace reporting

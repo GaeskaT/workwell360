@@ -186,7 +186,7 @@ function assessment({ id }) {
   };
 }
 function showResult(box, a, score, band) {
-  const routeMap = { anger: '#/anger', stress: '#/stress', burnout: '#/burnout', mental: '#/mental', grief: '#/grief', workplace: '#/counselling', family: '#/family' };
+  const routeMap = { anger: '#/anger', stress: '#/stress', burnout: '#/burnout', mental: '#/mental', grief: '#/grief', workplace: '#/counselling', family: '#/family', substance: '#/substance', conflict: '#/conflict', marriage: '#/marriage', chronic: '#/chronic' };
   box.innerHTML = html`
     <div class="card" style="margin-top:14px">
       ${ring(score, band.band)}
@@ -293,11 +293,14 @@ function relax() {
 
 /* ---------- Journal ---------- */
 function journal({ id }) {
-  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal' };
+  const titles = { gratitude: 'Gratitude journal', reflection: 'Daily reflection', grief: 'Grief journal', recovery: 'Recovery journal', marriage: 'Partnership journal', chronic: 'Living with it journal' };
   const prompts = {
     gratitude: 'Name one thing that went well today, and why.',
     reflection: 'What drained you today, and what restored you?',
     grief: 'However you feel today is okay. Write whatever needs to come out.',
+    recovery: 'What was the hardest moment today, and what did you do with it?',
+    marriage: 'What went well between us this week — and what do I want to say?',
+    chronic: 'What did my body ask of me today, and what did I need?',
   };
   const entries = store.get().journals[id] || [];
   return {

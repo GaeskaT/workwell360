@@ -16,6 +16,9 @@ export const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 /** Navigate */
 export const go = (route) => { location.hash = route.startsWith('#') ? route : '#' + route; };
 
+/** Re-render the current view (setting an identical hash fires no hashchange). */
+export const refresh = () => (window.__ww ? window.__ww.render() : location.reload());
+
 /** Toast */
 let toastTimer;
 export function toast(msg, ms = 1900) {
